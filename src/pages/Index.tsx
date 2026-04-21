@@ -1,19 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
+const TANYA_PHOTO = "https://i.wfolio.ru/x/nh2hBFOybeR4yRlieqG9JopNXDjN8qR8/HJp4z61teD_8MkzCvcJimfst-PyJthqQ/FEHc3Y7JxPbaP66Vo1EX1PtoSI4YUE5K/aZqr8lk--9yYSzYXE-zxmqVoQw91q4Ht/gTH3L4hJxHNzZVS-nQebtZ-331JX38ho/lVrRPzO12IOyTiuz_XZztCbfQX8gVIjT/1bxHumx6ZJuvxYVQztHMb0bkWhC-bG57/uk-ACsUVCJmbE3Fvr8-R4qbnJOXQJcId/zgkjy6HhkL4xJWt0MIFm7wI0oltKhh1x/02bC_aInMCFBoIJ4PjStGKvyJeCm-m9A/mCsRVJ1x3e8TNVIf_jg92bpct-TXWO7Y/R9S2t8GbgzP97vKpi5APq8jCnWhtIpgg/cpjBHTWdjCX0whEa0AqI8VHkqHoZ4oPW/uZhqZSJLHtN-HA6h3UNWnaKkV0Q0b2hR/NfWUjhxmNaRvtjhENIsB7HDtOOe_ncYc/VAmrkRbexmAlDHQhGoaRWDjjb61bfIdl/DngD-KsIOBvkVgwKEffblj6t83R7xn_L/2mvivb7KADNppWMR2BY5mB1_PZ29zjCa.jpg";
+
+const LEOPARD_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/ad50acb0-d652-43be-956b-69ded969b2b8.jpg";
+
 const GALLERY_IMAGES = [
-  {
-    src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/090c4f62-4ae5-4682-ab40-188c8ded582e.jpg",
-    alt: "Тропический декор",
-  },
-  {
-    src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/53433d65-f2cf-4a5b-b6b4-187eb55ab3b3.jpg",
-    alt: "Атмосфера вечеринки",
-  },
-  {
-    src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/f92fae87-5fa0-4867-b548-3ec6da2ac66a.jpg",
-    alt: "Торт",
-  },
+  { src: TANYA_PHOTO, alt: "Татьяна" },
+  { src: LEOPARD_PHOTO, alt: "Леопард в джунглях" },
+  { src: TANYA_PHOTO, alt: "Татьяна" },
+  { src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/090c4f62-4ae5-4682-ab40-188c8ded582e.jpg", alt: "Тропический декор" },
+  { src: TANYA_PHOTO, alt: "Татьяна" },
+  { src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/f92fae87-5fa0-4867-b548-3ec6da2ac66a.jpg", alt: "Торт" },
 ];
 
 const NAV_LINKS = [
@@ -144,8 +142,13 @@ export default function Index() {
 
       {/* HERO */}
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Leopard background image */}
+        <div
+          className="absolute inset-0 bg-center bg-cover"
+          style={{ backgroundImage: `url(${LEOPARD_PHOTO})` }}
+        />
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/65" />
         {/* Gold vignette glow */}
         <div
           className="absolute inset-0 opacity-20 pointer-events-none"
@@ -268,6 +271,29 @@ export default function Index() {
         </div>
       </Section>
 
+      {/* TANYA PORTRAIT SECTION */}
+      <section className="relative py-0 overflow-hidden" style={{ minHeight: "70vh" }}>
+        <div
+          className="absolute inset-0 bg-center bg-cover"
+          style={{ backgroundImage: `url(${TANYA_PHOTO})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50" />
+        <div className="relative h-full flex items-center justify-start max-w-6xl mx-auto px-6 py-32">
+          <div className="max-w-md">
+            <p className="font-script text-gold text-3xl mb-3">Именинница</p>
+            <h2 className="font-display font-black text-6xl md:text-8xl text-white leading-none mb-4 gold-shimmer">
+              Татьяна
+            </h2>
+            <div className="h-px w-24 bg-gold mb-6" />
+            <p className="text-sand-dark font-light text-lg leading-relaxed">
+              Загадочная. Яркая. Неповторимая.<br />
+              Как настоящий леопард тропиков.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* DATETIME */}
       <Section id="datetime" className="py-24 px-6 relative">
         <div className="absolute inset-0 bg-black/70" />
@@ -367,30 +393,43 @@ export default function Index() {
             <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Атмосфера праздника</h2>
             <GoldDivider />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {GALLERY_IMAGES.map((img, i) => (
-              <div
-                key={i}
-                className="relative overflow-hidden group cursor-pointer"
-                style={{ aspectRatio: "1/1" }}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-jungle/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                  <div className="text-gold">
-                    <Icon name="ZoomIn" size={36} fallback="Eye" />
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold to-gold-light scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+          {/* Mosaic grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {/* Large Tanya photo */}
+            <div className="relative overflow-hidden group cursor-pointer row-span-2 col-span-1" style={{ minHeight: "400px" }}>
+              <img src={TANYA_PHOTO} alt="Татьяна" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                <span className="font-script text-gold text-2xl">Татьяна</span>
               </div>
-            ))}
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold to-gold-light scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            </div>
+            {/* Leopard */}
+            <div className="relative overflow-hidden group cursor-pointer" style={{ aspectRatio: "1/1" }}>
+              <img src={LEOPARD_PHOTO} alt="Леопард" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                <span className="text-4xl">🐆</span>
+              </div>
+            </div>
+            {/* Tanya small */}
+            <div className="relative overflow-hidden group cursor-pointer" style={{ aspectRatio: "1/1" }}>
+              <img src={TANYA_PHOTO} alt="Татьяна" className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                <span className="font-script text-gold text-xl">Именинница</span>
+              </div>
+            </div>
+            {/* Decor */}
+            <div className="relative overflow-hidden group cursor-pointer" style={{ aspectRatio: "1/1" }}>
+              <img src="https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/090c4f62-4ae5-4682-ab40-188c8ded582e.jpg" alt="Декор" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            </div>
+            {/* Tanya again */}
+            <div className="relative overflow-hidden group cursor-pointer col-span-1" style={{ aspectRatio: "1/1" }}>
+              <img src={TANYA_PHOTO} alt="Татьяна" className="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute bottom-3 left-0 right-0 text-center">
+                <span className="font-script text-gold text-lg">🌴 Tropic Party</span>
+              </div>
+            </div>
           </div>
-          <p className="text-center text-sand-dark text-sm mt-8 font-light italic">
-            Фотографии с вечеринки появятся здесь после праздника
-          </p>
         </div>
       </Section>
 

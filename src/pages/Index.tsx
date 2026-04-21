@@ -279,7 +279,7 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: "Calendar", title: "Дата", main: "15 Августа", sub: "2026 года" },
+              { icon: "Calendar", title: "Дата", main: "18 Мая", sub: "2026 года" },
               { icon: "Clock", title: "Время", main: "19:00", sub: "Приём гостей с 18:30" },
               { icon: "Sparkles", title: "Формат", main: "Gala Night", sub: "Тропический вечер" },
             ].map((item) => (

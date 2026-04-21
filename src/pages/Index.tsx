@@ -101,12 +101,12 @@ export default function Index() {
   };
 
   return (
-    <div className="font-body bg-jungle text-sand-light min-h-screen overflow-x-hidden">
+    <div className="font-body text-sand-light min-h-screen overflow-x-hidden leopard-bg">
 
       {/* NAV */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-jungle/95 backdrop-blur-md shadow-lg shadow-black/30" : "bg-transparent"}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-black/80 backdrop-blur-md shadow-lg shadow-black/50" : "bg-transparent"}`}>
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <span className="font-display text-gold text-xl italic tracking-wide">Татьяна</span>
+          <span className="font-script text-gold text-xl tracking-wide">Tropic Party</span>
           <button
             className="md:hidden text-gold"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -144,59 +144,89 @@ export default function Index() {
 
       {/* HERO */}
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-jungle-light via-jungle to-jungle" />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/55" />
+        {/* Gold vignette glow */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-20 pointer-events-none"
           style={{
-            backgroundImage: `radial-gradient(circle at 20% 50%, #C9A84C 0%, transparent 50%), radial-gradient(circle at 80% 20%, #C9A84C 0%, transparent 40%)`,
+            backgroundImage: `radial-gradient(ellipse 80% 60% at 50% 50%, #C9A84C 0%, transparent 70%)`,
           }}
         />
 
-        <div className="absolute left-0 top-0 h-full w-64 text-jungle-mid animate-float-slow pointer-events-none opacity-70">
+        {/* Palm leaves deco */}
+        <div className="absolute left-0 top-0 h-full w-64 text-gold/10 animate-float-slow pointer-events-none">
           <PalmLeafLeft className="absolute -left-8 top-8 h-96 w-auto" />
           <PalmLeafLeft className="absolute -left-4 bottom-12 h-72 w-auto opacity-50" />
         </div>
-        <div className="absolute right-0 top-0 h-full w-64 text-jungle-mid animate-float pointer-events-none opacity-70">
+        <div className="absolute right-0 top-0 h-full w-64 text-gold/10 animate-float pointer-events-none">
           <PalmLeafRight className="absolute -right-8 top-8 h-96 w-auto" />
           <PalmLeafRight className="absolute -right-4 bottom-20 h-64 w-auto opacity-50" />
         </div>
 
-        {[...Array(8)].map((_, i) => (
+        {/* Gold sparkles */}
+        {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-gold opacity-20 animate-float"
+            className="absolute rounded-full bg-gold opacity-30 animate-float"
             style={{
-              width: `${4 + i * 2}px`,
-              height: `${4 + i * 2}px`,
-              left: `${10 + i * 10}%`,
-              top: `${20 + (i % 3) * 25}%`,
-              animationDelay: `${i * 0.7}s`,
-              animationDuration: `${5 + i}s`,
+              width: `${3 + i * 2}px`,
+              height: `${3 + i * 2}px`,
+              left: `${8 + i * 14}%`,
+              top: `${15 + (i % 3) * 28}%`,
+              animationDelay: `${i * 0.8}s`,
+              animationDuration: `${6 + i}s`,
             }}
           />
         ))}
 
-        <div className="relative text-center px-6 max-w-3xl mx-auto" style={{ animation: "fade-in 1.2s ease-out forwards" }}>
-          <p className="text-gold-light text-sm uppercase tracking-[0.4em] mb-6 font-light">
-            С любовью приглашаем вас
+        <div className="relative text-center px-6 max-w-4xl mx-auto" style={{ animation: "fade-in 1.2s ease-out forwards" }}>
+          {/* Party title */}
+          <p className="font-script text-gold text-3xl md:text-4xl mb-3 drop-shadow-lg">
+            Tropic Party
           </p>
-          <h1 className="font-display text-7xl md:text-9xl text-sand-light leading-none mb-4" style={{ textShadow: "0 0 60px rgba(201,168,76,0.3)" }}>
+          <p className="text-gold-light/80 text-xs uppercase tracking-[0.5em] mb-8 font-light">
+            С любовью приглашаем вас на день рождения
+          </p>
+
+          {/* Photo of birthday girl */}
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <div className="w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-gold shadow-2xl shadow-gold/40">
+                <img
+                  src="https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/f747701b-dad8-4fbd-b467-6fb45ec2dc9d.jpg"
+                  alt="Татьяна"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Gold ring glow */}
+              <div className="absolute -inset-2 rounded-full border border-gold/30 animate-float" />
+              <div className="absolute -inset-4 rounded-full border border-gold/15" />
+              {/* Leopard accent badge */}
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gold text-black text-xs font-bold px-4 py-1 rounded-full tracking-widest uppercase whitespace-nowrap shadow-lg">
+                🐆 Именинница
+              </div>
+            </div>
+          </div>
+
+          {/* Name */}
+          <h1 className="font-display font-black text-6xl md:text-8xl leading-none mb-3 gold-shimmer">
             Татьяна
           </h1>
+
           <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-px w-20 bg-gradient-to-r from-transparent to-gold" />
-            <span className="text-gold text-3xl">🌴</span>
-            <div className="h-px w-20 bg-gradient-to-l from-transparent to-gold" />
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold" />
+            <span className="text-2xl">🌴</span>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold" />
           </div>
-          <p className="font-display text-2xl md:text-3xl italic text-gold-light mb-10">
-            День Рождения
+
+          <p className="font-display text-xl md:text-2xl italic text-gold-light mb-10">
+            День Рождения · 2026
           </p>
-          <p className="text-sand-dark text-sm md:text-base uppercase tracking-[0.3em] mb-12 font-light">
-            Тропическая вечеринка · 2026
-          </p>
+
           <a
             href="#rsvp"
-            className="inline-block bg-gold text-jungle font-body text-sm uppercase tracking-widest px-10 py-4 hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/30"
+            className="inline-block bg-gold text-black font-body font-semibold text-xs uppercase tracking-widest px-10 py-4 hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/40"
           >
             Подтвердить участие
           </a>
@@ -208,10 +238,11 @@ export default function Index() {
       </header>
 
       {/* ABOUT */}
-      <Section id="about" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">О событии</p>
-          <h2 className="font-display text-5xl md:text-6xl text-sand-light mb-6">Добро пожаловать<br /><em>в тропики!</em></h2>
+      <Section id="about" className="py-24 px-6 relative">
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="max-w-4xl mx-auto text-center relative">
+          <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">О событии</p>
+          <h2 className="font-display text-5xl md:text-6xl text-sand-light mb-6 font-bold">Добро пожаловать<br /><em>в тропики!</em></h2>
           <GoldDivider />
           <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-8">
             Этот вечер будет наполнен теплом тропического солнца, ароматом экзотических цветов и лёгким бризом. Мы приглашаем вас разделить с нами этот особенный праздник в атмосфере роскошных тропиков.
@@ -238,11 +269,12 @@ export default function Index() {
       </Section>
 
       {/* DATETIME */}
-      <Section id="datetime" className="py-24 px-6 bg-jungle-light/40">
-        <div className="max-w-4xl mx-auto">
+      <Section id="datetime" className="py-24 px-6 relative">
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="max-w-4xl mx-auto relative">
           <div className="text-center mb-16">
-            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">Дата и время</p>
-            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Отметь в календаре</h2>
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">Дата и время</p>
+            <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Отметь в календаре</h2>
             <GoldDivider />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -253,7 +285,7 @@ export default function Index() {
             ].map((item) => (
               <div
                 key={item.title}
-                className="relative overflow-hidden bg-jungle border border-gold/30 p-10 text-center group hover:border-gold/60 transition-all duration-500"
+                className="relative overflow-hidden bg-black/50 border border-gold/30 p-10 text-center group hover:border-gold/70 transition-all duration-500 backdrop-blur-sm"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="text-gold mb-4 flex justify-center">
@@ -269,11 +301,12 @@ export default function Index() {
       </Section>
 
       {/* LOCATION */}
-      <Section id="location" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
+      <Section id="location" className="py-24 px-6 relative">
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="max-w-4xl mx-auto relative">
           <div className="text-center mb-16">
-            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">Место</p>
-            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Где нас найти</h2>
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">Место</p>
+            <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Где нас найти</h2>
             <GoldDivider />
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -308,7 +341,7 @@ export default function Index() {
                 Открыть карту
               </a>
             </div>
-            <div className="relative h-72 md:h-96 bg-jungle-light border border-gold/20 overflow-hidden">
+            <div className="relative h-72 md:h-96 bg-black/50 border border-gold/20 overflow-hidden backdrop-blur-sm">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-gold mb-4">
@@ -326,11 +359,12 @@ export default function Index() {
       </Section>
 
       {/* GALLERY */}
-      <Section id="gallery" className="py-24 px-6 bg-jungle-light/40">
-        <div className="max-w-5xl mx-auto">
+      <Section id="gallery" className="py-24 px-6 relative">
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="max-w-5xl mx-auto relative">
           <div className="text-center mb-16">
-            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">Галерея</p>
-            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Атмосфера праздника</h2>
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">Галерея</p>
+            <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Атмосфера праздника</h2>
             <GoldDivider />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -361,11 +395,12 @@ export default function Index() {
       </Section>
 
       {/* CONTACTS */}
-      <Section id="contacts" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
+      <Section id="contacts" className="py-24 px-6 relative">
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="max-w-4xl mx-auto relative">
           <div className="text-center mb-16">
-            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">Контакты</p>
-            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Связаться с нами</h2>
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">Контакты</p>
+            <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Связаться с нами</h2>
             <GoldDivider />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -377,7 +412,7 @@ export default function Index() {
               <a
                 key={c.label}
                 href={c.href}
-                className="block border border-gold/20 p-8 text-center hover:border-gold/60 hover:bg-jungle-light/30 transition-all duration-300 group"
+                className="block border border-gold/20 p-8 text-center hover:border-gold/60 hover:bg-black/40 transition-all duration-300 group backdrop-blur-sm"
               >
                 <div className="text-gold mb-4 flex justify-center group-hover:scale-110 transition-transform">
                   <Icon name={c.icon} size={32} fallback="Phone" />
@@ -391,17 +426,18 @@ export default function Index() {
       </Section>
 
       {/* RSVP */}
-      <Section id="rsvp" className="py-24 px-6 bg-jungle-light/40">
-        <div className="max-w-2xl mx-auto">
+      <Section id="rsvp" className="py-24 px-6 relative">
+        <div className="absolute inset-0 bg-black/75" />
+        <div className="max-w-2xl mx-auto relative">
           <div className="text-center mb-16">
-            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">RSVP</p>
-            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Вы придёте?</h2>
+            <p className="font-script text-gold text-2xl mb-2">RSVP</p>
+            <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Вы придёте?</h2>
             <GoldDivider />
             <p className="text-sand-dark font-light">Пожалуйста, подтвердите своё присутствие до 1 августа</p>
           </div>
 
           {rsvpSent ? (
-            <div className="border border-gold/40 p-12 text-center bg-jungle">
+            <div className="border border-gold/40 p-12 text-center bg-black/50 backdrop-blur-sm">
               <div className="text-gold mb-6 flex justify-center">
                 <Icon name="CheckCircle" size={56} fallback="Check" />
               </div>
@@ -415,7 +451,7 @@ export default function Index() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleRsvp} className="border border-gold/20 p-10 bg-jungle space-y-8">
+            <form onSubmit={handleRsvp} className="border border-gold/20 p-10 bg-black/50 backdrop-blur-sm space-y-8">
               <div>
                 <label className="block text-gold text-xs uppercase tracking-widest mb-3">Ваше имя</label>
                 <input
@@ -423,7 +459,7 @@ export default function Index() {
                   value={rsvpName}
                   onChange={(e) => setRsvpName(e.target.value)}
                   placeholder="Введите ваше имя"
-                  className="w-full bg-jungle-light border border-gold/20 text-sand-light placeholder-sand-dark/50 px-5 py-4 focus:outline-none focus:border-gold/60 transition-colors font-light text-sm"
+                  className="w-full bg-black/50 border border-gold/20 text-sand-light placeholder-sand-dark/50 px-5 py-4 focus:outline-none focus:border-gold/60 transition-colors font-light text-sm"
                 />
               </div>
               <div>
@@ -432,7 +468,7 @@ export default function Index() {
                   <button
                     type="button"
                     onClick={() => setRsvpAnswer("yes")}
-                    className={`py-4 border text-sm uppercase tracking-widest transition-all duration-300 ${rsvpAnswer === "yes" ? "bg-gold text-jungle border-gold" : "border-gold/30 text-sand-dark hover:border-gold/60 hover:text-sand-light"}`}
+                    className={`py-4 border text-sm uppercase tracking-widest transition-all duration-300 ${rsvpAnswer === "yes" ? "bg-gold text-black border-gold" : "border-gold/30 text-sand-dark hover:border-gold/60 hover:text-sand-light"}`}
                   >
                     🌴 Да, приду!
                   </button>
@@ -448,7 +484,7 @@ export default function Index() {
               <button
                 type="submit"
                 disabled={!rsvpName || !rsvpAnswer}
-                className="w-full bg-gold text-jungle py-4 text-sm uppercase tracking-widest font-medium hover:bg-gold-light transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full bg-gold text-black py-4 text-sm uppercase tracking-widest font-semibold hover:bg-gold-light transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 Отправить ответ
               </button>
@@ -458,14 +494,18 @@ export default function Index() {
       </Section>
 
       {/* FOOTER */}
-      <footer className="py-12 px-6 border-t border-gold/20 text-center">
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/40" />
-          <span className="text-gold text-xl">🌿</span>
-          <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/40" />
+      <footer className="relative py-12 px-6 border-t border-gold/20 text-center">
+        <div className="absolute inset-0 bg-black/80" />
+        <div className="relative">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/40" />
+            <span className="text-gold text-xl">🐆</span>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/40" />
+          </div>
+          <p className="font-script text-3xl text-gold mb-1">Tropic Party</p>
+          <p className="font-display text-lg italic text-sand-dark mb-1">Татьяна · День Рождения</p>
+          <p className="text-sand-dark/50 text-xs font-light tracking-widest uppercase">2026</p>
         </div>
-        <p className="font-display text-2xl italic text-gold mb-2">Татьяна</p>
-        <p className="text-sand-dark text-xs font-light tracking-widest uppercase">День Рождения · 2026</p>
       </footer>
     </div>
   );

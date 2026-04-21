@@ -20,8 +20,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				display: ['Cormorant Garamond', 'serif'],
-				body: ['Montserrat', 'sans-serif'],
+				display: ['Playfair Display', 'serif'],
+				body: ['Raleway', 'sans-serif'],
+				script: ['Pacifico', 'cursive'],
 			},
 			colors: {
 				gold: {

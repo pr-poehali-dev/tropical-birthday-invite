@@ -1,14 +1,472 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect, useRef } from "react";
+import Icon from "@/components/ui/icon";
 
-const Index = () => {
+const GALLERY_IMAGES = [
+  {
+    src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/090c4f62-4ae5-4682-ab40-188c8ded582e.jpg",
+    alt: "Тропический декор",
+  },
+  {
+    src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/53433d65-f2cf-4a5b-b6b4-187eb55ab3b3.jpg",
+    alt: "Атмосфера вечеринки",
+  },
+  {
+    src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/f92fae87-5fa0-4867-b548-3ec6da2ac66a.jpg",
+    alt: "Торт",
+  },
+];
+
+const NAV_LINKS = [
+  { href: "#about", label: "О событии" },
+  { href: "#datetime", label: "Дата" },
+  { href: "#location", label: "Место" },
+  { href: "#gallery", label: "Галерея" },
+  { href: "#contacts", label: "Контакты" },
+  { href: "#rsvp", label: "RSVP" },
+];
+
+function PalmLeafLeft({ className = "" }: { className?: string }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <svg className={className} viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 380 Q20 300 10 200 Q5 100 60 20 Q80 60 70 120 Q65 180 100 380Z" fill="currentColor" opacity="0.9"/>
+      <path d="M100 380 Q40 320 30 240 Q25 160 80 80 Q90 120 85 180 Q80 240 100 380Z" fill="currentColor" opacity="0.6"/>
+      <path d="M100 380 Q60 340 55 280 Q50 200 90 130 Q100 170 95 220 Q90 270 100 380Z" fill="currentColor" opacity="0.3"/>
+    </svg>
+  );
+}
+
+function PalmLeafRight({ className = "" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 380 Q180 300 190 200 Q195 100 140 20 Q120 60 130 120 Q135 180 100 380Z" fill="currentColor" opacity="0.9"/>
+      <path d="M100 380 Q160 320 170 240 Q175 160 120 80 Q110 120 115 180 Q120 240 100 380Z" fill="currentColor" opacity="0.6"/>
+      <path d="M100 380 Q140 340 145 280 Q150 200 110 130 Q100 170 105 220 Q110 270 100 380Z" fill="currentColor" opacity="0.3"/>
+    </svg>
+  );
+}
+
+function useInView(ref: React.RefObject<Element>) {
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { threshold: 0.15 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref]);
+  return inView;
+}
+
+function Section({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref as React.RefObject<Element>);
+  return (
+    <section
+      id={id}
+      ref={ref}
+      className={`transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"} ${className}`}
+    >
+      {children}
+    </section>
+  );
+}
+
+function GoldDivider() {
+  return (
+    <div className="flex items-center justify-center gap-4 my-8">
+      <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold" />
+      <span className="text-gold text-2xl">✦</span>
+      <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold" />
     </div>
   );
-};
+}
 
-export default Index;
+export default function Index() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [rsvpName, setRsvpName] = useState("");
+  const [rsvpAnswer, setRsvpAnswer] = useState<"yes" | "no" | null>(null);
+  const [rsvpSent, setRsvpSent] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleRsvp = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (rsvpName && rsvpAnswer) setRsvpSent(true);
+  };
+
+  return (
+    <div className="font-body bg-jungle text-sand-light min-h-screen overflow-x-hidden">
+
+      {/* NAV */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-jungle/95 backdrop-blur-md shadow-lg shadow-black/30" : "bg-transparent"}`}>
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <span className="font-display text-gold text-xl italic tracking-wide">Татьяна</span>
+          <button
+            className="md:hidden text-gold"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <Icon name={menuOpen ? "X" : "Menu"} size={24} />
+          </button>
+          <ul className="hidden md:flex gap-8">
+            {NAV_LINKS.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="text-sand-dark hover:text-gold transition-colors duration-300 text-sm uppercase tracking-widest font-light"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {menuOpen && (
+          <div className="md:hidden bg-jungle-light/98 backdrop-blur-md px-6 pb-6">
+            {NAV_LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMenuOpen(false)}
+                className="block py-3 text-sand-dark hover:text-gold transition-colors border-b border-jungle-mid text-sm uppercase tracking-widest"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </nav>
+
+      {/* HERO */}
+      <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-jungle-light via-jungle to-jungle" />
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `radial-gradient(circle at 20% 50%, #C9A84C 0%, transparent 50%), radial-gradient(circle at 80% 20%, #C9A84C 0%, transparent 40%)`,
+          }}
+        />
+
+        <div className="absolute left-0 top-0 h-full w-64 text-jungle-mid animate-float-slow pointer-events-none opacity-70">
+          <PalmLeafLeft className="absolute -left-8 top-8 h-96 w-auto" />
+          <PalmLeafLeft className="absolute -left-4 bottom-12 h-72 w-auto opacity-50" />
+        </div>
+        <div className="absolute right-0 top-0 h-full w-64 text-jungle-mid animate-float pointer-events-none opacity-70">
+          <PalmLeafRight className="absolute -right-8 top-8 h-96 w-auto" />
+          <PalmLeafRight className="absolute -right-4 bottom-20 h-64 w-auto opacity-50" />
+        </div>
+
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-gold opacity-20 animate-float"
+            style={{
+              width: `${4 + i * 2}px`,
+              height: `${4 + i * 2}px`,
+              left: `${10 + i * 10}%`,
+              top: `${20 + (i % 3) * 25}%`,
+              animationDelay: `${i * 0.7}s`,
+              animationDuration: `${5 + i}s`,
+            }}
+          />
+        ))}
+
+        <div className="relative text-center px-6 max-w-3xl mx-auto" style={{ animation: "fade-in 1.2s ease-out forwards" }}>
+          <p className="text-gold-light text-sm uppercase tracking-[0.4em] mb-6 font-light">
+            С любовью приглашаем вас
+          </p>
+          <h1 className="font-display text-7xl md:text-9xl text-sand-light leading-none mb-4" style={{ textShadow: "0 0 60px rgba(201,168,76,0.3)" }}>
+            Татьяна
+          </h1>
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-20 bg-gradient-to-r from-transparent to-gold" />
+            <span className="text-gold text-3xl">🌴</span>
+            <div className="h-px w-20 bg-gradient-to-l from-transparent to-gold" />
+          </div>
+          <p className="font-display text-2xl md:text-3xl italic text-gold-light mb-10">
+            День Рождения
+          </p>
+          <p className="text-sand-dark text-sm md:text-base uppercase tracking-[0.3em] mb-12 font-light">
+            Тропическая вечеринка · 2026
+          </p>
+          <a
+            href="#rsvp"
+            className="inline-block bg-gold text-jungle font-body text-sm uppercase tracking-widest px-10 py-4 hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/30"
+          >
+            Подтвердить участие
+          </a>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gold animate-bounce">
+          <Icon name="ChevronDown" size={28} />
+        </div>
+      </header>
+
+      {/* ABOUT */}
+      <Section id="about" className="py-24 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">О событии</p>
+          <h2 className="font-display text-5xl md:text-6xl text-sand-light mb-6">Добро пожаловать<br /><em>в тропики!</em></h2>
+          <GoldDivider />
+          <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+            Этот вечер будет наполнен теплом тропического солнца, ароматом экзотических цветов и лёгким бризом. Мы приглашаем вас разделить с нами этот особенный праздник в атмосфере роскошных тропиков.
+          </p>
+          <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto">
+            Дресс-код: <span className="text-gold font-medium">тропический шик</span> — яркие принты, золото, цветы в волосах. Пусть каждый станет частью этого незабываемого путешествия!
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            {[
+              { icon: "Sunset", label: "Вечерняя атмосфера", desc: "Живая музыка и коктейли на закате" },
+              { icon: "Utensils", label: "Тропический стол", desc: "Экзотические блюда и напитки" },
+              { icon: "Music", label: "Танцы", desc: "DJ сет до самого утра" },
+            ].map((item) => (
+              <div key={item.label} className="border border-gold/20 p-8 hover:border-gold/50 transition-colors duration-300 group">
+                <div className="text-gold mb-4 flex justify-center">
+                  <Icon name={item.icon} size={32} fallback="Star" />
+                </div>
+                <h3 className="font-display text-xl text-sand-light mb-2">{item.label}</h3>
+                <p className="text-sand-dark text-sm font-light">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* DATETIME */}
+      <Section id="datetime" className="py-24 px-6 bg-jungle-light/40">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">Дата и время</p>
+            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Отметь в календаре</h2>
+            <GoldDivider />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: "Calendar", title: "Дата", main: "15 Августа", sub: "2026 года" },
+              { icon: "Clock", title: "Время", main: "19:00", sub: "Приём гостей с 18:30" },
+              { icon: "Sparkles", title: "Формат", main: "Gala Night", sub: "Тропический вечер" },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="relative overflow-hidden bg-jungle border border-gold/30 p-10 text-center group hover:border-gold/60 transition-all duration-500"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="text-gold mb-4 flex justify-center">
+                  <Icon name={item.icon} size={36} fallback="Star" />
+                </div>
+                <p className="text-gold text-xs uppercase tracking-widest mb-3">{item.title}</p>
+                <p className="font-display text-4xl text-sand-light mb-2">{item.main}</p>
+                <p className="text-sand-dark text-sm font-light">{item.sub}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* LOCATION */}
+      <Section id="location" className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">Место</p>
+            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Где нас найти</h2>
+            <GoldDivider />
+          </div>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="border-l-2 border-gold pl-8 mb-8">
+                <h3 className="font-display text-3xl text-sand-light mb-2">Tropical Garden Hall</h3>
+                <p className="text-gold text-sm uppercase tracking-wider mb-4">Ресторан & Банкетный зал</p>
+                <p className="text-sand-dark leading-relaxed">
+                  ул. Тропическая, 15<br />
+                  Москва, Россия
+                </p>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { icon: "Car", text: "Бесплатная парковка для гостей" },
+                  { icon: "MapPin", text: "5 минут от метро Садовая" },
+                  { icon: "Phone", text: "+7 (999) 000-00-00" },
+                ].map((item) => (
+                  <div key={item.text} className="flex items-center gap-4 text-sand-dark">
+                    <div className="text-gold flex-shrink-0">
+                      <Icon name={item.icon} size={18} fallback="MapPin" />
+                    </div>
+                    <span className="text-sm font-light">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="#"
+                className="inline-flex items-center gap-3 mt-8 border border-gold text-gold px-8 py-3 text-sm uppercase tracking-widest hover:bg-gold hover:text-jungle transition-all duration-300"
+              >
+                <Icon name="Map" size={16} />
+                Открыть карту
+              </a>
+            </div>
+            <div className="relative h-72 md:h-96 bg-jungle-light border border-gold/20 overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-gold mb-4">
+                    <Icon name="MapPin" size={48} fallback="Map" />
+                  </div>
+                  <p className="text-sand-dark text-sm font-light">Карта будет добавлена</p>
+                </div>
+              </div>
+              <div className="absolute top-0 right-0 text-jungle-mid opacity-30">
+                <PalmLeafRight className="h-48 w-auto" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* GALLERY */}
+      <Section id="gallery" className="py-24 px-6 bg-jungle-light/40">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">Галерея</p>
+            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Атмосфера праздника</h2>
+            <GoldDivider />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {GALLERY_IMAGES.map((img, i) => (
+              <div
+                key={i}
+                className="relative overflow-hidden group cursor-pointer"
+                style={{ aspectRatio: "1/1" }}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-jungle/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <div className="text-gold">
+                    <Icon name="ZoomIn" size={36} fallback="Eye" />
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold to-gold-light scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-sand-dark text-sm mt-8 font-light italic">
+            Фотографии с вечеринки появятся здесь после праздника
+          </p>
+        </div>
+      </Section>
+
+      {/* CONTACTS */}
+      <Section id="contacts" className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">Контакты</p>
+            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Связаться с нами</h2>
+            <GoldDivider />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: "Phone", label: "Телефон", value: "+7 (999) 000-00-00", href: "tel:+79990000000" },
+              { icon: "Mail", label: "Email", value: "tatiana@party.ru", href: "mailto:tatiana@party.ru" },
+              { icon: "MessageCircle", label: "WhatsApp", value: "Написать сообщение", href: "#" },
+            ].map((c) => (
+              <a
+                key={c.label}
+                href={c.href}
+                className="block border border-gold/20 p-8 text-center hover:border-gold/60 hover:bg-jungle-light/30 transition-all duration-300 group"
+              >
+                <div className="text-gold mb-4 flex justify-center group-hover:scale-110 transition-transform">
+                  <Icon name={c.icon} size={32} fallback="Phone" />
+                </div>
+                <p className="text-gold text-xs uppercase tracking-widest mb-2">{c.label}</p>
+                <p className="text-sand-light font-light text-sm">{c.value}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* RSVP */}
+      <Section id="rsvp" className="py-24 px-6 bg-jungle-light/40">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4">RSVP</p>
+            <h2 className="font-display text-5xl md:text-6xl text-sand-light">Вы придёте?</h2>
+            <GoldDivider />
+            <p className="text-sand-dark font-light">Пожалуйста, подтвердите своё присутствие до 1 августа</p>
+          </div>
+
+          {rsvpSent ? (
+            <div className="border border-gold/40 p-12 text-center bg-jungle">
+              <div className="text-gold mb-6 flex justify-center">
+                <Icon name="CheckCircle" size={56} fallback="Check" />
+              </div>
+              <h3 className="font-display text-3xl text-sand-light mb-4">
+                {rsvpAnswer === "yes" ? "Отлично! Ждём вас!" : "Жаль, что не сможете прийти"}
+              </h3>
+              <p className="text-sand-dark font-light">
+                {rsvpAnswer === "yes"
+                  ? "Мы рады, что вы присоединитесь к нашему тропическому вечеру!"
+                  : "Спасибо за ответ. Будем скучать!"}
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleRsvp} className="border border-gold/20 p-10 bg-jungle space-y-8">
+              <div>
+                <label className="block text-gold text-xs uppercase tracking-widest mb-3">Ваше имя</label>
+                <input
+                  type="text"
+                  value={rsvpName}
+                  onChange={(e) => setRsvpName(e.target.value)}
+                  placeholder="Введите ваше имя"
+                  className="w-full bg-jungle-light border border-gold/20 text-sand-light placeholder-sand-dark/50 px-5 py-4 focus:outline-none focus:border-gold/60 transition-colors font-light text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-gold text-xs uppercase tracking-widest mb-4">Ваш ответ</label>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setRsvpAnswer("yes")}
+                    className={`py-4 border text-sm uppercase tracking-widest transition-all duration-300 ${rsvpAnswer === "yes" ? "bg-gold text-jungle border-gold" : "border-gold/30 text-sand-dark hover:border-gold/60 hover:text-sand-light"}`}
+                  >
+                    🌴 Да, приду!
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setRsvpAnswer("no")}
+                    className={`py-4 border text-sm uppercase tracking-widest transition-all duration-300 ${rsvpAnswer === "no" ? "bg-gold/30 text-gold border-gold/60" : "border-gold/30 text-sand-dark hover:border-gold/60 hover:text-sand-light"}`}
+                  >
+                    😔 Не смогу
+                  </button>
+                </div>
+              </div>
+              <button
+                type="submit"
+                disabled={!rsvpName || !rsvpAnswer}
+                className="w-full bg-gold text-jungle py-4 text-sm uppercase tracking-widest font-medium hover:bg-gold-light transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Отправить ответ
+              </button>
+            </form>
+          )}
+        </div>
+      </Section>
+
+      {/* FOOTER */}
+      <footer className="py-12 px-6 border-t border-gold/20 text-center">
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/40" />
+          <span className="text-gold text-xl">🌿</span>
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/40" />
+        </div>
+        <p className="font-display text-2xl italic text-gold mb-2">Татьяна</p>
+        <p className="text-sand-dark text-xs font-light tracking-widest uppercase">День Рождения · 2026</p>
+      </footer>
+    </div>
+  );
+}

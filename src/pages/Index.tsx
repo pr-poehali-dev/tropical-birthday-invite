@@ -4,14 +4,17 @@ import Icon from "@/components/ui/icon";
 const TANYA_PHOTO = "https://i.wfolio.ru/x/nh2hBFOybeR4yRlieqG9JopNXDjN8qR8/HJp4z61teD_8MkzCvcJimfst-PyJthqQ/FEHc3Y7JxPbaP66Vo1EX1PtoSI4YUE5K/aZqr8lk--9yYSzYXE-zxmqVoQw91q4Ht/gTH3L4hJxHNzZVS-nQebtZ-331JX38ho/lVrRPzO12IOyTiuz_XZztCbfQX8gVIjT/1bxHumx6ZJuvxYVQztHMb0bkWhC-bG57/uk-ACsUVCJmbE3Fvr8-R4qbnJOXQJcId/zgkjy6HhkL4xJWt0MIFm7wI0oltKhh1x/02bC_aInMCFBoIJ4PjStGKvyJeCm-m9A/mCsRVJ1x3e8TNVIf_jg92bpct-TXWO7Y/R9S2t8GbgzP97vKpi5APq8jCnWhtIpgg/cpjBHTWdjCX0whEa0AqI8VHkqHoZ4oPW/uZhqZSJLHtN-HA6h3UNWnaKkV0Q0b2hR/NfWUjhxmNaRvtjhENIsB7HDtOOe_ncYc/VAmrkRbexmAlDHQhGoaRWDjjb61bfIdl/DngD-KsIOBvkVgwKEffblj6t83R7xn_L/2mvivb7KADNppWMR2BY5mB1_PZ29zjCa.jpg";
 
 const LEOPARD_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/ad50acb0-d652-43be-956b-69ded969b2b8.jpg";
+const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/18d1e66d-7bf3-45b8-9df8-d7aed8d0ebfc.jpg";
+const COCKTAIL_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/6a362d1b-8822-4fbd-92e4-ef8accaa7305.jpg";
+const LEAVES_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/fd13dbe6-44cb-4069-8785-e75b8e83273a.jpg";
 
 const GALLERY_IMAGES = [
-  { src: TANYA_PHOTO, alt: "Татьяна" },
-  { src: LEOPARD_PHOTO, alt: "Леопард в джунглях" },
-  { src: TANYA_PHOTO, alt: "Татьяна" },
-  { src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/090c4f62-4ae5-4682-ab40-188c8ded582e.jpg", alt: "Тропический декор" },
-  { src: TANYA_PHOTO, alt: "Татьяна" },
-  { src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/f92fae87-5fa0-4867-b548-3ec6da2ac66a.jpg", alt: "Торт" },
+  { src: TANYA_PHOTO, alt: "Татьяна", pos: "object-top" },
+  { src: LEOPARD_PHOTO, alt: "Леопард в джунглях", pos: "object-center" },
+  { src: TANYA_PHOTO, alt: "Татьяна", pos: "object-center" },
+  { src: LEAVES_PHOTO, alt: "Тропические листья", pos: "object-center" },
+  { src: COCKTAIL_PHOTO, alt: "Тропический коктейль", pos: "object-center" },
+  { src: PANTHER_PHOTO, alt: "Пантера", pos: "object-center" },
 ];
 
 const NAV_LINKS = [
@@ -184,47 +187,49 @@ export default function Index() {
         ))}
 
         <div className="relative text-center px-6 max-w-4xl mx-auto" style={{ animation: "fade-in 1.2s ease-out forwards" }}>
-          {/* Party title */}
-          <p className="font-script text-gold text-3xl md:text-4xl mb-3 drop-shadow-lg">
-            Tropic Party
-          </p>
-          <p className="text-gold-light/80 text-xs uppercase tracking-[0.5em] mb-8 font-light">
-            С любовью приглашаем вас на день рождения
-          </p>
 
           {/* Photo of birthday girl */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-gold shadow-2xl shadow-gold/40">
+              <div className="w-44 h-44 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-gold shadow-2xl shadow-gold/40">
                 <img
-                  src="https://i.wfolio.ru/x/nh2hBFOybeR4yRlieqG9JopNXDjN8qR8/HJp4z61teD_8MkzCvcJimfst-PyJthqQ/FEHc3Y7JxPbaP66Vo1EX1PtoSI4YUE5K/aZqr8lk--9yYSzYXE-zxmqVoQw91q4Ht/gTH3L4hJxHNzZVS-nQebtZ-331JX38ho/lVrRPzO12IOyTiuz_XZztCbfQX8gVIjT/1bxHumx6ZJuvxYVQztHMb0bkWhC-bG57/uk-ACsUVCJmbE3Fvr8-R4qbnJOXQJcId/zgkjy6HhkL4xJWt0MIFm7wI0oltKhh1x/02bC_aInMCFBoIJ4PjStGKvyJeCm-m9A/mCsRVJ1x3e8TNVIf_jg92bpct-TXWO7Y/R9S2t8GbgzP97vKpi5APq8jCnWhtIpgg/cpjBHTWdjCX0whEa0AqI8VHkqHoZ4oPW/uZhqZSJLHtN-HA6h3UNWnaKkV0Q0b2hR/NfWUjhxmNaRvtjhENIsB7HDtOOe_ncYc/VAmrkRbexmAlDHQhGoaRWDjjb61bfIdl/DngD-KsIOBvkVgwKEffblj6t83R7xn_L/2mvivb7KADNppWMR2BY5mB1_PZ29zjCa.jpg"
+                  src={TANYA_PHOTO}
                   alt="Татьяна"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "center 15%" }}
                 />
               </div>
-              {/* Gold ring glow */}
               <div className="absolute -inset-2 rounded-full border border-gold/30 animate-float" />
-              <div className="absolute -inset-4 rounded-full border border-gold/15" />
-              {/* Leopard accent badge */}
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gold text-black text-xs font-bold px-4 py-1 rounded-full tracking-widest uppercase whitespace-nowrap shadow-lg">
+              <div className="absolute -inset-5 rounded-full border border-gold/15" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-gold text-black text-xs font-bold px-4 py-1 rounded-full tracking-widest uppercase whitespace-nowrap shadow-lg">
                 🐆 Именинница
               </div>
             </div>
           </div>
 
           {/* Name */}
-          <h1 className="font-display font-black text-6xl md:text-8xl leading-none mb-3 gold-shimmer">
+          <h1 className="font-display font-black text-6xl md:text-8xl leading-none mb-3 mt-6 gold-shimmer">
             Татьяна
           </h1>
 
-          <div className="flex items-center justify-center gap-4 mb-6">
+          <div className="flex items-center justify-center gap-4 mb-5">
             <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold" />
             <span className="text-2xl">🌴</span>
             <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold" />
           </div>
 
-          <p className="font-display text-xl md:text-2xl italic text-gold-light mb-10">
-            День Рождения · 2026
+          {/* Invitation text block */}
+          <div className="mb-4 px-4 md:px-0">
+            <p className="font-script text-gold text-2xl md:text-3xl drop-shadow-lg mb-1">
+              Приглашаю вас на свой День рождения
+            </p>
+            <p className="font-display font-black text-3xl md:text-5xl text-white tracking-widest uppercase drop-shadow-lg">
+              TROPIC PARTY
+            </p>
+          </div>
+
+          <p className="font-display text-lg md:text-xl italic text-gold-light mb-8">
+            18 мая · 2026
           </p>
 
           <a
@@ -247,17 +252,21 @@ export default function Index() {
           <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">О событии</p>
           <h2 className="font-display text-5xl md:text-6xl text-sand-light mb-6 font-bold">Добро пожаловать<br /><em>в тропики!</em></h2>
           <GoldDivider />
-          <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-            Этот вечер будет наполнен теплом тропического солнца, ароматом экзотических цветов и лёгким бризом. Мы приглашаем вас разделить с нами этот особенный праздник в атмосфере роскошных тропиков.
+          <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-6">
+            Этот вечер будет наполнен теплом тропического солнца, ароматом экзотических цветов и лёгким бризом. Приглашаю вас разделить со мной этот особенный праздник в атмосфере роскошных тропиков.
           </p>
-          <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto">
-            Дресс-код: <span className="text-gold font-medium">тропический шик</span> — яркие принты, золото, цветы в волосах. Пусть каждый станет частью этого незабываемого путешествия!
+          <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-4">
+            Дресс-код: <span className="text-gold font-medium">тропический шик</span> — яркие принты, леопард, золото, цветы в волосах.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-4">
+            Пусть каждый станет частью этого сказочного путешествия в Африку!
+          </p>
+          <p className="text-gold font-semibold text-xl mt-4 mb-12">Сбор гостей в 15:00</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: "Sunset", label: "Вечерняя атмосфера", desc: "Живая музыка и коктейли на закате" },
-              { icon: "Utensils", label: "Тропический стол", desc: "Экзотические блюда и напитки" },
-              { icon: "Music", label: "Танцы", desc: "DJ сет до самого утра" },
+              { icon: "Camera", label: "Велком зона", desc: "Фотосессия в сочных тропических локациях" },
+              { icon: "Music2", label: "Шоу программа", desc: "Танцевальные и вокальные группы" },
+              { icon: "Disc3", label: "Дискотека", desc: "Танцы от DJ до самого утра" },
             ].map((item) => (
               <div key={item.label} className="border border-gold/20 p-8 hover:border-gold/50 transition-colors duration-300 group">
                 <div className="text-gold mb-4 flex justify-center">
@@ -305,9 +314,9 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: "Calendar", title: "Дата", main: "18 Мая", sub: "2026 года" },
-              { icon: "Clock", title: "Время", main: "19:00", sub: "Приём гостей с 18:30" },
-              { icon: "Sparkles", title: "Формат", main: "Gala Night", sub: "Тропический вечер" },
+              { icon: "Calendar", title: "Дата", main: "18 мая", sub: "2026 года" },
+              { icon: "Clock", title: "Время", main: "15:00", sub: "Сбор гостей" },
+              { icon: "Sparkles", title: "Формат", main: "Tropic Party", sub: "Тропический праздник" },
             ].map((item) => (
               <div
                 key={item.title}
@@ -338,18 +347,18 @@ export default function Index() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="border-l-2 border-gold pl-8 mb-8">
-                <h3 className="font-display text-3xl text-sand-light mb-2">Tropical Garden Hall</h3>
-                <p className="text-gold text-sm uppercase tracking-wider mb-4">Ресторан & Банкетный зал</p>
+                <h3 className="font-display text-3xl text-sand-light mb-2">База отдыха «Лесная сказка»</h3>
+                <p className="text-gold text-sm uppercase tracking-wider mb-4">г. Краснодар</p>
                 <p className="text-sand-dark leading-relaxed">
-                  ул. Тропическая, 15<br />
-                  Москва, Россия
+                  Хутор Ленина, ул. Южная, 95<br />
+                  г. Краснодар
                 </p>
               </div>
               <div className="space-y-4">
                 {[
-                  { icon: "Car", text: "Бесплатная парковка для гостей" },
-                  { icon: "MapPin", text: "5 минут от метро Садовая" },
-                  { icon: "Phone", text: "+7 (999) 000-00-00" },
+                  { icon: "Clock", text: "Сбор гостей в 15:00" },
+                  { icon: "MapPin", text: "Хутор Ленина, ул. Южная 95" },
+                  { icon: "Phone", text: "+7 962 768-77-70" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-4 text-sand-dark">
                     <div className="text-gold flex-shrink-0">
@@ -360,11 +369,13 @@ export default function Index() {
                 ))}
               </div>
               <a
-                href="#"
+                href="https://yandex.ru/maps/org/lesnaya_skazka/48364685715?si=fmrjk45xf4r6k3z76j4udz03zg"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 mt-8 border border-gold text-gold px-8 py-3 text-sm uppercase tracking-widest hover:bg-gold hover:text-jungle transition-all duration-300"
               >
                 <Icon name="Map" size={16} />
-                Открыть карту
+                Открыть на Яндекс.Картах
               </a>
             </div>
             <div className="relative h-72 md:h-96 bg-black/50 border border-gold/20 overflow-hidden backdrop-blur-sm">
@@ -393,42 +404,24 @@ export default function Index() {
             <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Атмосфера праздника</h2>
             <GoldDivider />
           </div>
-          {/* Mosaic grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {/* Large Tanya photo */}
-            <div className="relative overflow-hidden group cursor-pointer row-span-2 col-span-1" style={{ minHeight: "400px" }}>
-              <img src={TANYA_PHOTO} alt="Татьяна" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-                <span className="font-script text-gold text-2xl">Татьяна</span>
+            {GALLERY_IMAGES.map((img, i) => (
+              <div
+                key={i}
+                className="relative overflow-hidden group cursor-pointer"
+                style={{ aspectRatio: "1/1" }}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className={`w-full h-full object-cover ${img.pos} transition-transform duration-700 group-hover:scale-110`}
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                  <span className="font-script text-gold text-xl">{img.alt}</span>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold to-gold-light scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-gold to-gold-light scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </div>
-            {/* Leopard */}
-            <div className="relative overflow-hidden group cursor-pointer" style={{ aspectRatio: "1/1" }}>
-              <img src={LEOPARD_PHOTO} alt="Леопард" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <span className="text-4xl">🐆</span>
-              </div>
-            </div>
-            {/* Tanya small */}
-            <div className="relative overflow-hidden group cursor-pointer" style={{ aspectRatio: "1/1" }}>
-              <img src={TANYA_PHOTO} alt="Татьяна" className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-                <span className="font-script text-gold text-xl">Именинница</span>
-              </div>
-            </div>
-            {/* Decor */}
-            <div className="relative overflow-hidden group cursor-pointer" style={{ aspectRatio: "1/1" }}>
-              <img src="https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/090c4f62-4ae5-4682-ab40-188c8ded582e.jpg" alt="Декор" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-            </div>
-            {/* Tanya again */}
-            <div className="relative overflow-hidden group cursor-pointer col-span-1" style={{ aspectRatio: "1/1" }}>
-              <img src={TANYA_PHOTO} alt="Татьяна" className="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-3 left-0 right-0 text-center">
-                <span className="font-script text-gold text-lg">🌴 Tropic Party</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </Section>
@@ -439,18 +432,21 @@ export default function Index() {
         <div className="max-w-4xl mx-auto relative">
           <div className="text-center mb-16">
             <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">Контакты</p>
-            <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Связаться с нами</h2>
+            <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Связаться со мной</h2>
             <GoldDivider />
+            <p className="text-sand-dark font-light mb-8">Подтвердите своё участие заранее</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (999) 000-00-00", href: "tel:+79990000000" },
-              { icon: "Mail", label: "Email", value: "tatiana@party.ru", href: "mailto:tatiana@party.ru" },
-              { icon: "MessageCircle", label: "WhatsApp", value: "Написать сообщение", href: "#" },
+              { icon: "Phone", label: "Телефон", value: "+7 962 768-77-70", href: "tel:+79627687770" },
+              { icon: "MessageCircle", label: "WhatsApp", value: "Написать в WhatsApp", href: "https://wa.me/79627687770" },
+              { icon: "Send", label: "Telegram", value: "Написать в Telegram", href: "https://t.me/+79627687770" },
             ].map((c) => (
               <a
                 key={c.label}
                 href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block border border-gold/20 p-8 text-center hover:border-gold/60 hover:bg-black/40 transition-all duration-300 group backdrop-blur-sm"
               >
                 <div className="text-gold mb-4 flex justify-center group-hover:scale-110 transition-transform">
@@ -472,7 +468,7 @@ export default function Index() {
             <p className="font-script text-gold text-2xl mb-2">RSVP</p>
             <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Вы придёте?</h2>
             <GoldDivider />
-            <p className="text-sand-dark font-light">Пожалуйста, подтвердите своё присутствие до 1 августа</p>
+            <p className="text-sand-dark font-light">Пожалуйста, подтвердите своё присутствие заранее</p>
           </div>
 
           {rsvpSent ? (

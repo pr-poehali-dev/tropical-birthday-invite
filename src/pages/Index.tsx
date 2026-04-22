@@ -1,7 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-const TANYA_PHOTO = "https://i.wfolio.ru/x/nh2hBFOybeR4yRlieqG9JopNXDjN8qR8/HJp4z61teD_8MkzCvcJimfst-PyJthqQ/FEHc3Y7JxPbaP66Vo1EX1PtoSI4YUE5K/aZqr8lk--9yYSzYXE-zxmqVoQw91q4Ht/gTH3L4hJxHNzZVS-nQebtZ-331JX38ho/lVrRPzO12IOyTiuz_XZztCbfQX8gVIjT/1bxHumx6ZJuvxYVQztHMb0bkWhC-bG57/uk-ACsUVCJmbE3Fvr8-R4qbnJOXQJcId/zgkjy6HhkL4xJWt0MIFm7wI0oltKhh1x/02bC_aInMCFBoIJ4PjStGKvyJeCm-m9A/mCsRVJ1x3e8TNVIf_jg92bpct-TXWO7Y/R9S2t8GbgzP97vKpi5APq8jCnWhtIpgg/cpjBHTWdjCX0whEa0AqI8VHkqHoZ4oPW/uZhqZSJLHtN-HA6h3UNWnaKkV0Q0b2hR/NfWUjhxmNaRvtjhENIsB7HDtOOe_ncYc/VAmrkRbexmAlDHQhGoaRWDjjb61bfIdl/DngD-KsIOBvkVgwKEffblj6t83R7xn_L/2mvivb7KADNppWMR2BY5mB1_PZ29zjCa.jpg";
+// Фото Татьяны (5 штук с Mail.ru)
+const TANYA_1 = "https://cloclo60.cloud.mail.ru/weblink/view/RBtF/Dgv35552Y";
+const TANYA_2 = "https://cloclo60.cloud.mail.ru/weblink/view/QVsG/BuumLqPBL";
+const TANYA_3 = "https://cloclo60.cloud.mail.ru/weblink/view/wJZ8/AXqjhYwgx";
+const TANYA_4 = "https://cloclo60.cloud.mail.ru/weblink/view/frFR/n1m1XDahA";
+const TANYA_5 = "https://cloclo60.cloud.mail.ru/weblink/view/gucx/sUQe7YWnt";
+
+const TANYA_PHOTO = TANYA_1;
 
 const LEOPARD_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/ad50acb0-d652-43be-956b-69ded969b2b8.jpg";
 const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/18d1e66d-7bf3-45b8-9df8-d7aed8d0ebfc.jpg";
@@ -9,11 +16,14 @@ const COCKTAIL_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c
 const LEAVES_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/fd13dbe6-44cb-4069-8785-e75b8e83273a.jpg";
 
 const GALLERY_IMAGES = [
-  { src: TANYA_PHOTO, alt: "Татьяна", pos: "object-top" },
+  { src: TANYA_1, alt: "Татьяна", pos: "object-top" },
+  { src: TANYA_2, alt: "Татьяна", pos: "object-top" },
   { src: LEOPARD_PHOTO, alt: "Леопард в джунглях", pos: "object-center" },
-  { src: TANYA_PHOTO, alt: "Татьяна", pos: "object-center" },
+  { src: TANYA_3, alt: "Татьяна", pos: "object-top" },
   { src: LEAVES_PHOTO, alt: "Тропические листья", pos: "object-center" },
+  { src: TANYA_4, alt: "Татьяна", pos: "object-top" },
   { src: COCKTAIL_PHOTO, alt: "Тропический коктейль", pos: "object-center" },
+  { src: TANYA_5, alt: "Татьяна", pos: "object-top" },
   { src: PANTHER_PHOTO, alt: "Пантера", pos: "object-center" },
 ];
 
@@ -284,7 +294,7 @@ export default function Index() {
       <section className="relative py-0 overflow-hidden" style={{ minHeight: "70vh" }}>
         <div
           className="absolute inset-0 bg-center bg-cover"
-          style={{ backgroundImage: `url(${TANYA_PHOTO})` }}
+          style={{ backgroundImage: `url(${TANYA_2})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50" />

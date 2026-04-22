@@ -1,14 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
-// Фото Татьяны (5 штук с Mail.ru)
-const TANYA_1 = "https://cloclo60.cloud.mail.ru/weblink/view/RBtF/Dgv35552Y";
-const TANYA_2 = "https://cloclo60.cloud.mail.ru/weblink/view/QVsG/BuumLqPBL";
+// Фото Татьяны (Wfolio — фотограф Ольга Королёва)
+const TANYA_1 = "https://i.wfolio.ru/x/nh2hBFOybeR4yRlieqG9JopNXDjN8qR8/HJp4z61teD_8MkzCvcJimfst-PyJthqQ/FEHc3Y7JxPbaP66Vo1EX1PtoSI4YUE5K/aZqr8lk--9yYSzYXE-zxmqVoQw91q4Ht/gTH3L4hJxHNzZVS-nQebtZ-331JX38ho/lVrRPzO12IOyTiuz_XZztCbfQX8gVIjT/1bxHumx6ZJuvxYVQztHMb0bkWhC-bG57/uk-ACsUVCJmbE3Fvr8-R4qbnJOXQJcId/zgkjy6HhkL4xJWt0MIFm7wI0oltKhh1x/02bC_aInMCFBoIJ4PjStGKvyJeCm-m9A/mCsRVJ1x3e8TNVIf_jg92bpct-TXWO7Y/R9S2t8GbgzP97vKpi5APq8jCnWhtIpgg/cpjBHTWdjCX0whEa0AqI8VHkqHoZ4oPW/uZhqZSJLHtN-HA6h3UNWnaKkV0Q0b2hR/NfWUjhxmNaRvtjhENIsB7HDtOOe_ncYc/VAmrkRbexmAlDHQhGoaRWDjjb61bfIdl/DngD-KsIOBvkVgwKEffblj6t83R7xn_L/2mvivb7KADNppWMR2BY5mB1_PZ29zjCa.jpg";
+const TANYA_2 = "https://i.wfolio.ru/x/23Q2n7kS-flJtGEKTA-UZuoJhg9IPs5Y/vOPf0Hc-kvd-Tf5Xw-IWA_xDr8NWmpnj/ShjY2u9jNa-T1FsIuSWem1-eE-4w_11g/BNrz5fXskRFpWWZ-2cQObmw_J_6x8Blf/4ugrsYydHcQvilmNobKhoGc8yOcv9KE/tFQxGd__YRvLVk7bCt5g3wFT3JhkUZjC/Zl1G_9vBpbkWbV3Kn6uNGi8xAmsmcQCX/hd3FNfZt7dUFfY5CcKdVL8DaI5p3yonM/7GCxG8EI3SYwHWJXFHRjvIMZl1S9BNJN/Q8g6K2nq7JdKxHp_YAWOlStlRMVWj-F2/U_LVxzYL94wd_RXqwNfHSFrOAJIKq5A8/c2j1L3qWN8j7vaqzxFN-H_eTRxYNE-nG/VrVMkGcqFyvqt50szqidZBYDZW9NJlMs/gCE7xkDZ3v0vD2PwJqzfluHEuHy6Xw5F/kq30wYzB8VKjixizVbixVAzWwqt5F-aR/Q8_jqVOCZ2-W98ZxSOeqW1k7FmPpN7vb/j94mQvSUP0cjgOdKJqpPNbz8eNyU8JUT/jBQ3e-tqnwlMGhzPiKi8d_JpEisgpGl0.jpg";
 const TANYA_3 = "https://cloclo60.cloud.mail.ru/weblink/view/wJZ8/AXqjhYwgx";
 const TANYA_4 = "https://cloclo60.cloud.mail.ru/weblink/view/frFR/n1m1XDahA";
 const TANYA_5 = "https://cloclo60.cloud.mail.ru/weblink/view/gucx/sUQe7YWnt";
 
 const TANYA_PHOTO = TANYA_1;
+const DRESSCODE_FABRIC = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/62cce86a-3921-43d5-ba78-08fd8d7fc2ec.jpg";
 
 const LEOPARD_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/ad50acb0-d652-43be-956b-69ded969b2b8.jpg";
 const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/18d1e66d-7bf3-45b8-9df8-d7aed8d0ebfc.jpg";
@@ -17,18 +18,19 @@ const LEAVES_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0
 
 const GALLERY_IMAGES = [
   { src: TANYA_1, alt: "Татьяна", pos: "object-top" },
-  { src: TANYA_2, alt: "Татьяна", pos: "object-top" },
-  { src: LEOPARD_PHOTO, alt: "Леопард в джунглях", pos: "object-center" },
+  { src: LEOPARD_PHOTO, alt: "Леопард", pos: "object-center" },
+  { src: TANYA_2, alt: "Татьяна с леопардом", pos: "object-top" },
+  { src: LEAVES_PHOTO, alt: "Тропики", pos: "object-center" },
   { src: TANYA_3, alt: "Татьяна", pos: "object-top" },
-  { src: LEAVES_PHOTO, alt: "Тропические листья", pos: "object-center" },
+  { src: COCKTAIL_PHOTO, alt: "Коктейль", pos: "object-center" },
   { src: TANYA_4, alt: "Татьяна", pos: "object-top" },
-  { src: COCKTAIL_PHOTO, alt: "Тропический коктейль", pos: "object-center" },
-  { src: TANYA_5, alt: "Татьяна", pos: "object-top" },
   { src: PANTHER_PHOTO, alt: "Пантера", pos: "object-center" },
+  { src: TANYA_5, alt: "Татьяна", pos: "object-top" },
 ];
 
 const NAV_LINKS = [
-  { href: "#about", label: "О событии" },
+  { href: "#about", label: "Программа" },
+  { href: "#dresscode", label: "Дресс-код" },
   { href: "#datetime", label: "Дата" },
   { href: "#location", label: "Место" },
   { href: "#gallery", label: "Галерея" },
@@ -272,13 +274,14 @@ export default function Index() {
             Пусть каждый станет частью этого сказочного путешествия в Африку!
           </p>
           <p className="text-gold font-semibold text-xl mt-4 mb-12">Сбор гостей в 15:00</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: "Camera", label: "Велком зона", desc: "Фотосессия в сочных тропических локациях" },
               { icon: "Music2", label: "Шоу программа", desc: "Танцевальные и вокальные группы" },
               { icon: "Disc3", label: "Дискотека", desc: "Танцы от DJ до самого утра" },
+              { icon: "UtensilsCrossed", label: "Банкет", desc: "Вкусные закуски, фрукты и напитки из жаркой Африки" },
             ].map((item) => (
-              <div key={item.label} className="border border-gold/20 p-8 hover:border-gold/50 transition-colors duration-300 group">
+              <div key={item.label} className="border border-gold/20 p-8 hover:border-gold/50 transition-colors duration-300 group text-center">
                 <div className="text-gold mb-4 flex justify-center">
                   <Icon name={item.icon} size={32} fallback="Star" />
                 </div>
@@ -312,6 +315,47 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* DRESSCODE */}
+      <Section id="dresscode" className="py-24 px-6 relative">
+        <div className="absolute inset-0 bg-black/75" />
+        <div className="max-w-5xl mx-auto relative">
+          <div className="text-center mb-14">
+            <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">Дресс-код</p>
+            <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Тропический шик</h2>
+            <GoldDivider />
+            <p className="text-sand-dark text-lg max-w-xl mx-auto">Яркие принты, леопард, золото, цветы в волосах — пусть каждый станет частью сказочного путешествия в Африку!</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+            {[
+              { color: "#C9A84C", label: "Золотой", emoji: "✨" },
+              { color: "#D4C5A9", label: "Бежевый", emoji: "🌾" },
+              { color: "#1a1a1a", label: "Чёрный", emoji: "🖤", border: true },
+              { color: "repeating-linear-gradient(45deg,#C9A84C 0px,#C9A84C 8px,#8B5E3C 8px,#8B5E3C 16px,#1a1a1a 16px,#1a1a1a 24px)", label: "Леопард", emoji: "🐆" },
+              { color: "#2D5016", label: "Тёмно-зелёный", emoji: "🌿" },
+              { color: "#4A7C3F", label: "Зелёный", emoji: "🌴" },
+            ].map((c) => (
+              <div key={c.label} className="flex flex-col items-center gap-3 group cursor-default">
+                <div
+                  className={`w-20 h-20 md:w-24 md:h-24 rounded-full shadow-lg shadow-black/40 border-2 transition-transform duration-300 group-hover:scale-110 ${c.border ? "border-gold/40" : "border-transparent"}`}
+                  style={{ background: c.color }}
+                />
+                <span className="text-sand-light text-sm font-light tracking-wide">{c.emoji} {c.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="relative overflow-hidden rounded-none">
+            <img
+              src={DRESSCODE_FABRIC}
+              alt="Цветовая гамма дресс-кода"
+              className="w-full h-64 md:h-80 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 flex items-end p-8">
+              <p className="font-script text-gold text-2xl md:text-3xl">Золото · Леопард · Тропики</p>
+            </div>
+          </div>
+        </div>
+      </Section>
 
       {/* DATETIME */}
       <Section id="datetime" className="py-24 px-6 relative">
@@ -388,18 +432,16 @@ export default function Index() {
                 Открыть на Яндекс.Картах
               </a>
             </div>
-            <div className="relative h-72 md:h-96 bg-black/50 border border-gold/20 overflow-hidden backdrop-blur-sm">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-gold mb-4">
-                    <Icon name="MapPin" size={48} fallback="Map" />
-                  </div>
-                  <p className="text-sand-dark text-sm font-light">Карта будет добавлена</p>
-                </div>
-              </div>
-              <div className="absolute top-0 right-0 text-jungle-mid opacity-30">
-                <PalmLeafRight className="h-48 w-auto" />
-              </div>
+            <div className="relative h-72 md:h-96 border border-gold/20 overflow-hidden">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=39.022820%2C45.074510&z=15&pt=39.022820,45.074510,pm2rdm&l=map"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="База отдыха Лесная сказка"
+                allowFullScreen
+                style={{ border: 0 }}
+              />
             </div>
           </div>
         </div>
@@ -450,7 +492,7 @@ export default function Index() {
             {[
               { icon: "Phone", label: "Телефон", value: "+7 962 768-77-70", href: "tel:+79627687770" },
               { icon: "MessageCircle", label: "WhatsApp", value: "Написать в WhatsApp", href: "https://wa.me/79627687770" },
-              { icon: "Send", label: "Telegram", value: "Написать в Telegram", href: "https://t.me/+79627687770" },
+              { icon: "Send", label: "Telegram", value: "@tatyanka_life", href: "https://t.me/tatyanka_life" },
             ].map((c) => (
               <a
                 key={c.label}

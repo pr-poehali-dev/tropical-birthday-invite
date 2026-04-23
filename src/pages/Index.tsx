@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
-// v2
+// v3 — fix LEOPARD_PHOTO reference
 
 // Фото Татьяны (Wfolio — фотограф Ольга Королёва)
 // TANYA_CIRCLE — новое фото для кружка (Mail.ru DD2n)
@@ -23,6 +23,8 @@ const TANYA_FULLBG = "https://cloclo60.cloud.mail.ru/weblink/view/GpLS/iKwk2Tfhu
 
 // Ткани для дресс-кода
 const DRESSCODE_FABRICS = "https://cloclo60.cloud.mail.ru/weblink/view/agBK/AEWka9GDe";
+// Алиас для обратной совместимости
+const LEOPARD_PHOTO = TANYA_LEOP_STAND;
 
 const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/105555b1-f862-4530-8439-02aa5a0be615.jpg";
 const COCKTAIL_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/5f7cc73b-d1c8-45aa-9d9e-c10e920eda27.jpg";

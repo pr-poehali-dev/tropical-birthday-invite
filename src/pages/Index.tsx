@@ -23,13 +23,13 @@ const TANYA_FULLBG = "https://cloclo60.cloud.mail.ru/weblink/view/GpLS/iKwk2Tfhu
 
 // Ткани для дресс-кода
 const DRESSCODE_FABRICS = "https://cloclo60.cloud.mail.ru/weblink/view/agBK/AEWka9GDe";
-// Алиас для обратной совместимости
-const LEOPARD_PHOTO = TANYA_LEOP_STAND;
 
 const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/105555b1-f862-4530-8439-02aa5a0be615.jpg";
 const COCKTAIL_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/5f7cc73b-d1c8-45aa-9d9e-c10e920eda27.jpg";
 // Татьяна стоит с леопардом на поводке
 const TANYA_LEOP_STAND = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/3704ba48-9334-4ea5-8225-a02dd8584abd.jpg";
+// Алиас для обратной совместимости
+const LEOPARD_PHOTO = TANYA_LEOP_STAND;
 // Татьяна с пантерой (чёрный образ)
 const TANYA_PANTHER = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/430f04b8-f297-4f3b-99eb-4db702e26614.jpg";
 // Татьяна смотрит на леопарда

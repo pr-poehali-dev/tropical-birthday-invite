@@ -348,15 +348,16 @@ export default function Index() {
       </Section>
 
       {/* TANYA PORTRAIT SECTION */}
-      <section className="relative py-0 overflow-hidden" style={{ minHeight: "70vh" }}>
+      <section className="relative py-0 overflow-hidden" style={{ minHeight: "80vh" }}>
         <div
-          className="absolute inset-0 bg-center bg-cover"
-          style={{ backgroundImage: `url(${TANYA_PORTRAIT})`, backgroundPosition: "center 30%" }}
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: `url(${TANYA_PORTRAIT})`, backgroundPosition: "60% center" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/80" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50" />
+        {/* Затемнение только левой части, правая (лицо) остаётся чистой */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
         <div className="relative h-full flex items-center justify-start max-w-6xl mx-auto px-6 py-32">
-          <div className="max-w-lg">
+          <div className="max-w-md">
             <p className="font-script text-gold text-3xl mb-3">Именинница</p>
             <h2 className="font-display font-black text-6xl md:text-8xl text-white leading-none mb-4 gold-shimmer">
               Татьяна

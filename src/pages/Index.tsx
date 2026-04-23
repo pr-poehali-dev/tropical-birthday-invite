@@ -15,7 +15,7 @@ const TANYA_6 = "https://cloclo60.cloud.mail.ru/weblink/view/SR33/HTUwtBHoq";
 const TANYA_PHOTO = TANYA_1;
 
 // Фото для портретной секции (новое фото kKW6)
-const TANYA_PORTRAIT = "https://cloclo60.cloud.mail.ru/weblink/view/kKW6/vAJyPUxdr";
+const TANYA_PORTRAIT = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/d29784ba-7ef5-4330-b6ba-04b24641bf5a.jpg";
 
 // Большое фото перед контактами
 const TANYA_FULLBG = "https://cloclo60.cloud.mail.ru/weblink/view/GpLS/iKwk2Tfhu";

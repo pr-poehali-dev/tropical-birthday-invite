@@ -15,7 +15,7 @@ const TANYA_6 = "https://cloclo60.cloud.mail.ru/weblink/view/SR33/HTUwtBHoq";
 const TANYA_PHOTO = TANYA_1;
 
 // Фото для портретной секции (новое фото kKW6)
-const TANYA_PORTRAIT = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/d29784ba-7ef5-4330-b6ba-04b24641bf5a.jpg";
+const TANYA_PORTRAIT = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/98930c1c-e954-4127-bc63-d9e3e809ee79.jpg";
 
 // Большое фото перед контактами
 const TANYA_FULLBG = "https://cloclo60.cloud.mail.ru/weblink/view/GpLS/iKwk2Tfhu";
@@ -351,7 +351,7 @@ export default function Index() {
       <section className="relative py-0 overflow-hidden" style={{ minHeight: "80vh" }}>
         <div
           className="absolute inset-0 bg-cover"
-          style={{ backgroundImage: `url(${TANYA_PORTRAIT})`, backgroundPosition: "60% center" }}
+          style={{ backgroundImage: `url(${TANYA_PORTRAIT})`, backgroundPosition: "60% top" }}
         />
         {/* Затемнение только левой части, правая (лицо) остаётся чистой */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/10" />

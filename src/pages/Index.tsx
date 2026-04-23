@@ -28,8 +28,8 @@ const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-
 const COCKTAIL_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/5f7cc73b-d1c8-45aa-9d9e-c10e920eda27.jpg";
 // Татьяна стоит с леопардом на поводке
 const TANYA_LEOP_STAND = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/3704ba48-9334-4ea5-8225-a02dd8584abd.jpg";
-// Алиас для обратной совместимости
-const LEOPARD_PHOTO = TANYA_LEOP_STAND;
+// Оригинальный леопард для фона блока программы
+const LEOPARD_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/ad50acb0-d652-43be-956b-69ded969b2b8.jpg";
 // Татьяна с пантерой (чёрный образ)
 const TANYA_PANTHER = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/430f04b8-f297-4f3b-99eb-4db702e26614.jpg";
 // Татьяна смотрит на леопарда
@@ -318,7 +318,7 @@ export default function Index() {
       <Section id="about" className="py-24 px-6 relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${TANYA_LEOP_STAND})`, filter: "brightness(0.25)" }}
+          style={{ backgroundImage: `url(${LEOPARD_PHOTO})`, filter: "brightness(0.25)" }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="max-w-4xl mx-auto text-center relative">

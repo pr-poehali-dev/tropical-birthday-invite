@@ -555,18 +555,16 @@ export default function Index() {
       </Section>
 
       {/* FULL BG PHOTO before contacts */}
+      <div className="text-center py-12 px-6 bg-black">
+        <p className="font-script text-gold text-3xl md:text-4xl mb-3">18 мая · 2026</p>
+        <h2 className="font-display font-black text-5xl md:text-7xl text-white gold-shimmer">Tropic Party</h2>
+      </div>
       <section className="relative overflow-hidden" style={{ minHeight: "60vh" }}>
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${TANYA_FULLBG})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70" />
-        <div className="relative h-full flex items-center justify-center py-32 text-center px-6">
-          <div>
-            <p className="font-script text-gold text-3xl md:text-4xl mb-3">18 мая · 2026</p>
-            <h2 className="font-display font-black text-5xl md:text-7xl text-white gold-shimmer">Tropic Party</h2>
-          </div>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
       </section>
 
       {/* CONTACTS */}

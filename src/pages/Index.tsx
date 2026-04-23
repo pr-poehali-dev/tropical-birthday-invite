@@ -9,25 +9,38 @@ const TANYA_2 = "https://i.wfolio.ru/x/23Q2n7kS-flJtGEKTA-UZuoJhg9IPs5Y/vOPf0Hc-
 const TANYA_3 = "https://cloclo60.cloud.mail.ru/weblink/view/wJZ8/AXqjhYwgx";
 const TANYA_4 = "https://cloclo60.cloud.mail.ru/weblink/view/frFR/n1m1XDahA";
 const TANYA_5 = "https://cloclo60.cloud.mail.ru/weblink/view/gucx/sUQe7YWnt";
+// Доп. фото именинницы из галереи
+const TANYA_6 = "https://cloclo60.cloud.mail.ru/weblink/view/SR33/HTUwtBHoq";
 
 const TANYA_PHOTO = TANYA_1;
-const DRESSCODE_FABRIC = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/62cce86a-3921-43d5-ba78-08fd8d7fc2ec.jpg";
+
+// Фото для портретной секции (новое фото kKW6)
+const TANYA_PORTRAIT = "https://cloclo60.cloud.mail.ru/weblink/view/kKW6/vAJyPUxdr";
+
+// Большое фото перед контактами
+const TANYA_FULLBG = "https://cloclo60.cloud.mail.ru/weblink/view/GpLS/iKwk2Tfhu";
+
+// Ткани для дресс-кода
+const DRESSCODE_FABRICS = "https://cloclo60.cloud.mail.ru/weblink/view/agBK/AEWka9GDe";
 
 const LEOPARD_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/ad50acb0-d652-43be-956b-69ded969b2b8.jpg";
 const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/18d1e66d-7bf3-45b8-9df8-d7aed8d0ebfc.jpg";
 const COCKTAIL_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/6a362d1b-8822-4fbd-92e4-ef8accaa7305.jpg";
 const LEAVES_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/fd13dbe6-44cb-4069-8785-e75b8e83273a.jpg";
+// Леопард в тропических листьях (новое)
+const LEOPARD_TROPIC = "https://cloclo60.cloud.mail.ru/weblink/view/wJZ8/AXqjhYwgx";
 
 const GALLERY_IMAGES = [
   { src: TANYA_1, alt: "Татьяна", pos: "object-top" },
-  { src: LEOPARD_PHOTO, alt: "Леопард", pos: "object-center" },
-  { src: TANYA_2, alt: "Татьяна с леопардом", pos: "object-top" },
-  { src: LEAVES_PHOTO, alt: "Тропики", pos: "object-center" },
-  { src: TANYA_3, alt: "Татьяна", pos: "object-top" },
-  { src: COCKTAIL_PHOTO, alt: "Коктейль", pos: "object-center" },
-  { src: TANYA_4, alt: "Татьяна", pos: "object-top" },
+  { src: LEOPARD_TROPIC, alt: "Леопард в тропиках", pos: "object-center" },
+  { src: TANYA_2, alt: "Татьяна", pos: "object-top" },
   { src: PANTHER_PHOTO, alt: "Пантера", pos: "object-center" },
+  { src: TANYA_3, alt: "Татьяна", pos: "object-top" },
+  { src: LEAVES_PHOTO, alt: "Тропики", pos: "object-center" },
+  { src: TANYA_4, alt: "Татьяна", pos: "object-top" },
+  { src: COCKTAIL_PHOTO, alt: "Ананас и тропики", pos: "object-center" },
   { src: TANYA_5, alt: "Татьяна", pos: "object-top" },
+  { src: TANYA_6, alt: "Татьяна", pos: "object-top" },
 ];
 
 const NAV_LINKS = [
@@ -39,6 +52,44 @@ const NAV_LINKS = [
   { href: "#contacts", label: "Контакты" },
   { href: "#rsvp", label: "RSVP" },
 ];
+
+function Countdown({ targetDate }: { targetDate: Date }) {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const calc = () => {
+      const diff = targetDate.getTime() - Date.now();
+      if (diff <= 0) { setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 }); return; }
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+      });
+    };
+    calc();
+    const id = setInterval(calc, 1000);
+    return () => clearInterval(id);
+  }, [targetDate]);
+
+  return (
+    <div className="grid grid-cols-4 gap-4 md:gap-8 mt-6">
+      {[
+        { v: timeLeft.days, l: "Дней" },
+        { v: timeLeft.hours, l: "Часов" },
+        { v: timeLeft.minutes, l: "Минут" },
+        { v: timeLeft.seconds, l: "Секунд" },
+      ].map(({ v, l }) => (
+        <div key={l} className="border border-gold/30 bg-black/40 backdrop-blur-sm p-4 md:p-8">
+          <p className="font-display font-black text-5xl md:text-7xl text-gold gold-shimmer tabular-nums">
+            {String(v).padStart(2, "0")}
+          </p>
+          <p className="text-sand-dark text-xs uppercase tracking-widest mt-2">{l}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function PalmLeafLeft({ className = "" }: { className?: string }) {
   return (
@@ -300,21 +351,30 @@ export default function Index() {
       <section className="relative py-0 overflow-hidden" style={{ minHeight: "70vh" }}>
         <div
           className="absolute inset-0 bg-center bg-cover"
-          style={{ backgroundImage: `url(${TANYA_2})`, backgroundPosition: "center 40%" }}
+          style={{ backgroundImage: `url(${TANYA_PORTRAIT})`, backgroundPosition: "center 30%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50" />
         <div className="relative h-full flex items-center justify-start max-w-6xl mx-auto px-6 py-32">
-          <div className="max-w-md">
+          <div className="max-w-lg">
             <p className="font-script text-gold text-3xl mb-3">Именинница</p>
             <h2 className="font-display font-black text-6xl md:text-8xl text-white leading-none mb-4 gold-shimmer">
               Татьяна
             </h2>
             <div className="h-px w-24 bg-gold mb-6" />
-            <p className="text-sand-dark font-light text-lg leading-relaxed">
+            <p className="text-sand-dark font-light text-lg leading-relaxed mb-4">
               Загадочная. Яркая. Неповторимая.<br />
               Как настоящий леопард тропиков.
             </p>
+            <div className="border-l-2 border-gold/60 pl-4">
+              <p className="text-gold text-xs uppercase tracking-widest mb-2">Дресс-код</p>
+              <p className="text-sand-light font-light text-base leading-relaxed">
+                Тропический шик — яркие принты, леопард, золото, чёрный гламур, зелень и цветочные украшения.
+              </p>
+              <p className="text-sand-dark font-light text-sm mt-2 italic">
+                Пусть каждый станет частью этого сказочного путешествия в Африку!
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -327,35 +387,36 @@ export default function Index() {
             <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">Дресс-код</p>
             <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Тропический шик</h2>
             <GoldDivider />
-            <p className="text-sand-dark text-lg max-w-xl mx-auto">Яркие принты, леопард, золото, цветы в волосах — пусть каждый станет частью сказочного путешествия в Африку!</p>
+            <p className="text-sand-dark text-lg max-w-xl mx-auto">Яркие принты, леопард, золото, чёрный гламур, зелень и цветочные украшения</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {[
-              { color: "#C9A84C", label: "Золотой", emoji: "✨" },
-              { color: "#D4C5A9", label: "Бежевый", emoji: "🌾" },
-              { color: "#1a1a1a", label: "Чёрный", emoji: "🖤", border: true },
-              { color: "repeating-linear-gradient(45deg,#C9A84C 0px,#C9A84C 8px,#8B5E3C 8px,#8B5E3C 16px,#1a1a1a 16px,#1a1a1a 24px)", label: "Леопард", emoji: "🐆" },
-              { color: "#2D5016", label: "Тёмно-зелёный", emoji: "🌿" },
-              { color: "#4A7C3F", label: "Зелёный", emoji: "🌴" },
-            ].map((c) => (
-              <div key={c.label} className="flex flex-col items-center gap-3 group cursor-default">
-                <div
-                  className={`w-20 h-20 md:w-24 md:h-24 rounded-full shadow-lg shadow-black/40 border-2 transition-transform duration-300 group-hover:scale-110 ${c.border ? "border-gold/40" : "border-transparent"}`}
-                  style={{ background: c.color }}
-                />
-                <span className="text-sand-light text-sm font-light tracking-wide">{c.emoji} {c.label}</span>
+              { label: "Золотой шёлк", emoji: "✨", color: "#b8963e" },
+              { label: "Бежевый шёлк", emoji: "🌾", color: "#c8a97a" },
+              { label: "Шоколад", emoji: "🍫", color: "#5c3317" },
+              { label: "Тёмно-зелёный", emoji: "🌿", color: "#1a3320" },
+              { label: "Чёрный гламур", emoji: "🖤", color: "#111111" },
+              { label: "Леопард", emoji: "🐆", color: "#8B5E3C" },
+            ].map((c, i) => (
+              <div key={c.label} className="group relative overflow-hidden border border-gold/20 hover:border-gold/50 transition-all duration-300">
+                <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
+                  <img
+                    src={DRESSCODE_FABRICS}
+                    alt={c.label}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    style={{
+                      objectPosition: `${(i % 3) * 50}% ${Math.floor(i / 3) * 50}%`,
+                      filter: i === 5 ? "sepia(0.3) saturate(1.2)" : `hue-rotate(${[0,20,-10,120,0,-30][i]}deg) saturate(${[1.2,0.8,0.7,1.1,0,1.4][i]}) brightness(${[1,1,0.7,0.8,0.3,1][i]})`,
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 text-center">
+                    <span className="text-lg">{c.emoji}</span>
+                    <p className="text-sand-light text-xs font-light tracking-wide mt-1">{c.label}</p>
+                  </div>
+                </div>
               </div>
             ))}
-          </div>
-          <div className="relative overflow-hidden rounded-none">
-            <img
-              src={DRESSCODE_FABRIC}
-              alt="Цветовая гамма дресс-кода"
-              className="w-full h-64 md:h-80 object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 flex items-end p-8">
-              <p className="font-script text-gold text-2xl md:text-3xl">Золото · Леопард · Тропики</p>
-            </div>
           </div>
         </div>
       </Section>
@@ -435,18 +496,39 @@ export default function Index() {
                 Открыть на Яндекс.Картах
               </a>
             </div>
-            <div className="relative h-72 md:h-96 border border-gold/20 overflow-hidden">
-              <iframe
-                src="https://yandex.ru/map-widget/v1/?ll=39.022820%2C45.074510&z=15&pt=39.022820,45.074510,pm2rdm&l=map"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                title="База отдыха Лесная сказка"
-                allowFullScreen
-                style={{ border: 0 }}
-              />
+            <div className="relative h-72 md:h-96 border border-gold/20 overflow-hidden flex flex-col items-center justify-center gap-6 bg-black/40 backdrop-blur-sm">
+              <div className="text-gold">
+                <Icon name="MapPin" size={56} fallback="Map" />
+              </div>
+              <div className="text-center px-6">
+                <p className="text-sand-light font-display text-xl mb-1">База отдыха «Лесная сказка»</p>
+                <p className="text-sand-dark text-sm font-light">Хутор Ленина, ул. Южная, 95 · г. Краснодар</p>
+              </div>
+              <a
+                href="https://yandex.ru/maps/org/lesnaya_skazka/48364685715?si=fmrjk45xf4r6k3z76j4udz03zg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-gold text-gold px-6 py-2 text-sm uppercase tracking-widest hover:bg-gold hover:text-jungle transition-all duration-300"
+              >
+                <Icon name="Navigation" size={14} />
+                Маршрут
+              </a>
+              <div className="absolute top-0 right-0 text-jungle-mid opacity-20 pointer-events-none">
+                <PalmLeafRight className="h-48 w-auto" />
+              </div>
             </div>
           </div>
+        </div>
+      </Section>
+
+      {/* COUNTDOWN */}
+      <Section id="countdown" className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-black/80" />
+        <div className="max-w-4xl mx-auto relative text-center">
+          <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">До праздника осталось</p>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-sand-light mb-8">18 мая 2026</h2>
+          <GoldDivider />
+          <Countdown targetDate={new Date("2026-05-18T15:00:00")} />
         </div>
       </Section>
 
@@ -480,6 +562,21 @@ export default function Index() {
           </div>
         </div>
       </Section>
+
+      {/* FULL BG PHOTO before contacts */}
+      <section className="relative overflow-hidden" style={{ minHeight: "60vh" }}>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${TANYA_FULLBG})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70" />
+        <div className="relative h-full flex items-center justify-center py-32 text-center px-6">
+          <div>
+            <p className="font-script text-gold text-3xl md:text-4xl mb-3">18 мая · 2026</p>
+            <h2 className="font-display font-black text-5xl md:text-7xl text-white gold-shimmer">Tropic Party</h2>
+          </div>
+        </div>
+      </section>
 
       {/* CONTACTS */}
       <Section id="contacts" className="py-24 px-6 relative">

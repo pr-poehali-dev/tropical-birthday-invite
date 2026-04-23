@@ -23,24 +23,25 @@ const TANYA_FULLBG = "https://cloclo60.cloud.mail.ru/weblink/view/GpLS/iKwk2Tfhu
 // Ткани для дресс-кода
 const DRESSCODE_FABRICS = "https://cloclo60.cloud.mail.ru/weblink/view/agBK/AEWka9GDe";
 
-const LEOPARD_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/ad50acb0-d652-43be-956b-69ded969b2b8.jpg";
-const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/18d1e66d-7bf3-45b8-9df8-d7aed8d0ebfc.jpg";
-const COCKTAIL_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/6a362d1b-8822-4fbd-92e4-ef8accaa7305.jpg";
-const LEAVES_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/files/fd13dbe6-44cb-4069-8785-e75b8e83273a.jpg";
-// Леопард в тропических листьях (новое)
-const LEOPARD_TROPIC = "https://cloclo60.cloud.mail.ru/weblink/view/wJZ8/AXqjhYwgx";
+const PANTHER_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/105555b1-f862-4530-8439-02aa5a0be615.jpg";
+const COCKTAIL_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/5f7cc73b-d1c8-45aa-9d9e-c10e920eda27.jpg";
+// Татьяна стоит с леопардом на поводке
+const TANYA_LEOP_STAND = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/3704ba48-9334-4ea5-8225-a02dd8584abd.jpg";
+// Татьяна с пантерой (чёрный образ)
+const TANYA_PANTHER = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/430f04b8-f297-4f3b-99eb-4db702e26614.jpg";
+// Татьяна смотрит на леопарда
+const TANYA_LEOP_LOOK = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/e054e6a6-bb87-4895-a7fc-f1fe6a0bbe6a.jpg";
 
 const GALLERY_IMAGES = [
+  { src: TANYA_CIRCLE, alt: "Татьяна", pos: "object-top" },
+  { src: TANYA_LEOP_STAND, alt: "Татьяна с леопардом", pos: "object-top" },
+  { src: PANTHER_PHOTO, alt: "Пантера в джунглях", pos: "object-center" },
+  { src: TANYA_PANTHER, alt: "Татьяна с пантерой", pos: "object-top" },
+  { src: TANYA_LEOP_LOOK, alt: "Татьяна и леопард", pos: "object-top" },
+  { src: COCKTAIL_PHOTO, alt: "Тропический коктейль", pos: "object-center" },
   { src: TANYA_1, alt: "Татьяна", pos: "object-top" },
-  { src: LEOPARD_TROPIC, alt: "Леопард в тропиках", pos: "object-center" },
   { src: TANYA_2, alt: "Татьяна", pos: "object-top" },
-  { src: PANTHER_PHOTO, alt: "Пантера", pos: "object-center" },
   { src: TANYA_3, alt: "Татьяна", pos: "object-top" },
-  { src: LEAVES_PHOTO, alt: "Тропики", pos: "object-center" },
-  { src: TANYA_4, alt: "Татьяна", pos: "object-top" },
-  { src: COCKTAIL_PHOTO, alt: "Ананас и тропики", pos: "object-center" },
-  { src: TANYA_5, alt: "Татьяна", pos: "object-top" },
-  { src: TANYA_6, alt: "Татьяна", pos: "object-top" },
 ];
 
 const NAV_LINKS = [

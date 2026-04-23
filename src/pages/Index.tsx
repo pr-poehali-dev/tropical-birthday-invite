@@ -35,16 +35,20 @@ const TANYA_PANTHER = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-
 // Татьяна смотрит на леопарда
 const TANYA_LEOP_LOOK = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/e054e6a6-bb87-4895-a7fc-f1fe6a0bbe6a.jpg";
 
+const PEACOCK_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/33bc6c86-ff75-4ec6-a914-75b3881e09ca.jpg";
+const MONSTERA_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/4d9bef6a-15bb-4070-ab01-97a0b3eb2937.jpg";
+const TANYA_BLACK = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/6ad533d3-3d36-4d44-aa6b-58dd2dde0ea5.jpg";
+
 const GALLERY_IMAGES = [
-  { src: TANYA_CIRCLE, alt: "Татьяна", pos: "object-top" },
   { src: TANYA_LEOP_STAND, alt: "Татьяна с леопардом", pos: "object-top" },
   { src: PANTHER_PHOTO, alt: "Пантера в джунглях", pos: "object-center" },
   { src: TANYA_PANTHER, alt: "Татьяна с пантерой", pos: "object-top" },
+  { src: PEACOCK_PHOTO, alt: "Павлин", pos: "object-center" },
   { src: TANYA_LEOP_LOOK, alt: "Татьяна и леопард", pos: "object-top" },
   { src: COCKTAIL_PHOTO, alt: "Тропический коктейль", pos: "object-center" },
+  { src: TANYA_BLACK, alt: "Татьяна", pos: "object-top" },
+  { src: MONSTERA_PHOTO, alt: "Тропические листья", pos: "object-center" },
   { src: TANYA_1, alt: "Татьяна", pos: "object-top" },
-  { src: TANYA_2, alt: "Татьяна", pos: "object-top" },
-  { src: TANYA_3, alt: "Татьяна", pos: "object-top" },
 ];
 
 const NAV_LINKS = [

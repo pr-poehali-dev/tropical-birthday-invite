@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
 // Фото Татьяны (Wfolio — фотограф Ольга Королёва)
+// TANYA_CIRCLE — новое фото для кружка (Mail.ru DD2n)
+const TANYA_CIRCLE = "https://cloclo60.cloud.mail.ru/weblink/view/DD2n/PtNGh9BYE";
 const TANYA_1 = "https://i.wfolio.ru/x/nh2hBFOybeR4yRlieqG9JopNXDjN8qR8/HJp4z61teD_8MkzCvcJimfst-PyJthqQ/FEHc3Y7JxPbaP66Vo1EX1PtoSI4YUE5K/aZqr8lk--9yYSzYXE-zxmqVoQw91q4Ht/gTH3L4hJxHNzZVS-nQebtZ-331JX38ho/lVrRPzO12IOyTiuz_XZztCbfQX8gVIjT/1bxHumx6ZJuvxYVQztHMb0bkWhC-bG57/uk-ACsUVCJmbE3Fvr8-R4qbnJOXQJcId/zgkjy6HhkL4xJWt0MIFm7wI0oltKhh1x/02bC_aInMCFBoIJ4PjStGKvyJeCm-m9A/mCsRVJ1x3e8TNVIf_jg92bpct-TXWO7Y/R9S2t8GbgzP97vKpi5APq8jCnWhtIpgg/cpjBHTWdjCX0whEa0AqI8VHkqHoZ4oPW/uZhqZSJLHtN-HA6h3UNWnaKkV0Q0b2hR/NfWUjhxmNaRvtjhENIsB7HDtOOe_ncYc/VAmrkRbexmAlDHQhGoaRWDjjb61bfIdl/DngD-KsIOBvkVgwKEffblj6t83R7xn_L/2mvivb7KADNppWMR2BY5mB1_PZ29zjCa.jpg";
 const TANYA_2 = "https://i.wfolio.ru/x/23Q2n7kS-flJtGEKTA-UZuoJhg9IPs5Y/vOPf0Hc-kvd-Tf5Xw-IWA_xDr8NWmpnj/ShjY2u9jNa-T1FsIuSWem1-eE-4w_11g/BNrz5fXskRFpWWZ-2cQObmw_J_6x8Blf/4ugrsYydHcQvilmNobKhoGc8yOcv9KE/tFQxGd__YRvLVk7bCt5g3wFT3JhkUZjC/Zl1G_9vBpbkWbV3Kn6uNGi8xAmsmcQCX/hd3FNfZt7dUFfY5CcKdVL8DaI5p3yonM/7GCxG8EI3SYwHWJXFHRjvIMZl1S9BNJN/Q8g6K2nq7JdKxHp_YAWOlStlRMVWj-F2/U_LVxzYL94wd_RXqwNfHSFrOAJIKq5A8/c2j1L3qWN8j7vaqzxFN-H_eTRxYNE-nG/VrVMkGcqFyvqt50szqidZBYDZW9NJlMs/gCE7xkDZ3v0vD2PwJqzfluHEuHy6Xw5F/kq30wYzB8VKjixizVbixVAzWwqt5F-aR/Q8_jqVOCZ2-W98ZxSOeqW1k7FmPpN7vb/j94mQvSUP0cjgOdKJqpPNbz8eNyU8JUT/jBQ3e-tqnwlMGhzPiKi8d_JpEisgpGl0.jpg";
 const TANYA_3 = "https://cloclo60.cloud.mail.ru/weblink/view/wJZ8/AXqjhYwgx";
@@ -203,12 +205,12 @@ export default function Index() {
           {/* Photo of birthday girl */}
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="w-44 h-44 md:w-60 md:h-60 rounded-full overflow-hidden border-4 border-gold shadow-2xl shadow-gold/40">
+              <div className="w-52 h-52 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-gold shadow-2xl shadow-gold/40">
                 <img
-                  src={TANYA_PHOTO}
+                  src={TANYA_CIRCLE}
                   alt="Татьяна"
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "center 15%" }}
+                  style={{ objectPosition: "center 10%", transform: "scale(1.15)" }}
                 />
               </div>
               <div className="absolute -inset-2 rounded-full border border-gold/30 animate-float" />
@@ -258,17 +260,18 @@ export default function Index() {
       </header>
 
       {/* ABOUT */}
-      <Section id="about" className="py-24 px-6 relative">
-        <div className="absolute inset-0 bg-black/60" />
+      <Section id="about" className="py-24 px-6 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${LEOPARD_PHOTO})`, filter: "brightness(0.25)" }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="max-w-4xl mx-auto text-center relative">
           <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">О событии</p>
           <h2 className="font-display text-5xl md:text-6xl text-sand-light mb-6 font-bold">Добро пожаловать<br /><em>в тропики!</em></h2>
           <GoldDivider />
-          <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-6">
-            Этот вечер будет наполнен теплом тропического солнца, ароматом экзотических цветов и лёгким бризом. Приглашаю вас разделить со мной этот особенный праздник в атмосфере роскошных тропиков.
-          </p>
           <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-4">
-            Дресс-код: <span className="text-gold font-medium">тропический шик</span> — яркие принты, леопард, золото, цветы в волосах.
+            Этот вечер будет наполнен теплом тропического солнца, ароматом экзотических цветов и лёгким бризом. Приглашаю вас разделить со мной этот особенный праздник в атмосфере роскошных тропиков.
           </p>
           <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-4">
             Пусть каждый станет частью этого сказочного путешествия в Африку!
@@ -277,11 +280,11 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: "Camera", label: "Велком зона", desc: "Фотосессия в сочных тропических локациях" },
-              { icon: "Music2", label: "Шоу программа", desc: "Танцевальные и вокальные группы" },
-              { icon: "Disc3", label: "Дискотека", desc: "Танцы от DJ до самого утра" },
               { icon: "UtensilsCrossed", label: "Банкет", desc: "Вкусные закуски, фрукты и напитки из жаркой Африки" },
+              { icon: "Music2", label: "Шоу программа", desc: "Танцевальные и вокальные группы, ведущий" },
+              { icon: "Disc3", label: "Дискотека", desc: "Танцы и Dj" },
             ].map((item) => (
-              <div key={item.label} className="border border-gold/20 p-8 hover:border-gold/50 transition-colors duration-300 group text-center">
+              <div key={item.label} className="border border-gold/20 p-8 hover:border-gold/50 transition-colors duration-300 group text-center backdrop-blur-sm bg-black/20">
                 <div className="text-gold mb-4 flex justify-center">
                   <Icon name={item.icon} size={32} fallback="Star" />
                 </div>
@@ -297,7 +300,7 @@ export default function Index() {
       <section className="relative py-0 overflow-hidden" style={{ minHeight: "70vh" }}>
         <div
           className="absolute inset-0 bg-center bg-cover"
-          style={{ backgroundImage: `url(${TANYA_2})` }}
+          style={{ backgroundImage: `url(${TANYA_2})`, backgroundPosition: "center 40%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50" />

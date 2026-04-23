@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 
 // Фото Татьяны (Wfolio — фотограф Ольга Королёва)
 // TANYA_CIRCLE — новое фото для кружка (Mail.ru DD2n)
-const TANYA_CIRCLE = "https://cloclo60.cloud.mail.ru/weblink/view/DD2n/PtNGh9BYE";
+const TANYA_CIRCLE = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/1a7ba296-6767-4fd6-9794-09a9bb2df104.jpg";
 const TANYA_1 = "https://i.wfolio.ru/x/nh2hBFOybeR4yRlieqG9JopNXDjN8qR8/HJp4z61teD_8MkzCvcJimfst-PyJthqQ/FEHc3Y7JxPbaP66Vo1EX1PtoSI4YUE5K/aZqr8lk--9yYSzYXE-zxmqVoQw91q4Ht/gTH3L4hJxHNzZVS-nQebtZ-331JX38ho/lVrRPzO12IOyTiuz_XZztCbfQX8gVIjT/1bxHumx6ZJuvxYVQztHMb0bkWhC-bG57/uk-ACsUVCJmbE3Fvr8-R4qbnJOXQJcId/zgkjy6HhkL4xJWt0MIFm7wI0oltKhh1x/02bC_aInMCFBoIJ4PjStGKvyJeCm-m9A/mCsRVJ1x3e8TNVIf_jg92bpct-TXWO7Y/R9S2t8GbgzP97vKpi5APq8jCnWhtIpgg/cpjBHTWdjCX0whEa0AqI8VHkqHoZ4oPW/uZhqZSJLHtN-HA6h3UNWnaKkV0Q0b2hR/NfWUjhxmNaRvtjhENIsB7HDtOOe_ncYc/VAmrkRbexmAlDHQhGoaRWDjjb61bfIdl/DngD-KsIOBvkVgwKEffblj6t83R7xn_L/2mvivb7KADNppWMR2BY5mB1_PZ29zjCa.jpg";
 const TANYA_2 = "https://i.wfolio.ru/x/23Q2n7kS-flJtGEKTA-UZuoJhg9IPs5Y/vOPf0Hc-kvd-Tf5Xw-IWA_xDr8NWmpnj/ShjY2u9jNa-T1FsIuSWem1-eE-4w_11g/BNrz5fXskRFpWWZ-2cQObmw_J_6x8Blf/4ugrsYydHcQvilmNobKhoGc8yOcv9KE/tFQxGd__YRvLVk7bCt5g3wFT3JhkUZjC/Zl1G_9vBpbkWbV3Kn6uNGi8xAmsmcQCX/hd3FNfZt7dUFfY5CcKdVL8DaI5p3yonM/7GCxG8EI3SYwHWJXFHRjvIMZl1S9BNJN/Q8g6K2nq7JdKxHp_YAWOlStlRMVWj-F2/U_LVxzYL94wd_RXqwNfHSFrOAJIKq5A8/c2j1L3qWN8j7vaqzxFN-H_eTRxYNE-nG/VrVMkGcqFyvqt50szqidZBYDZW9NJlMs/gCE7xkDZ3v0vD2PwJqzfluHEuHy6Xw5F/kq30wYzB8VKjixizVbixVAzWwqt5F-aR/Q8_jqVOCZ2-W98ZxSOeqW1k7FmPpN7vb/j94mQvSUP0cjgOdKJqpPNbz8eNyU8JUT/jBQ3e-tqnwlMGhzPiKi8d_JpEisgpGl0.jpg";
 const TANYA_3 = "https://cloclo60.cloud.mail.ru/weblink/view/wJZ8/AXqjhYwgx";

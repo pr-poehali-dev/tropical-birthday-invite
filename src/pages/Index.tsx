@@ -19,7 +19,7 @@ const TANYA_PHOTO = TANYA_1;
 const TANYA_PORTRAIT = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/98930c1c-e954-4127-bc63-d9e3e809ee79.jpg";
 
 // Большое фото перед контактами
-const TANYA_FULLBG = "https://cloclo60.cloud.mail.ru/weblink/view/GpLS/iKwk2Tfhu";
+const TANYA_FULLBG = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/7bc97f36-d878-4774-8989-c4161efe18c1.jpg";
 
 // Ткани для дресс-кода
 const DRESSCODE_FABRICS = "https://cloclo60.cloud.mail.ru/weblink/view/agBK/AEWka9GDe";

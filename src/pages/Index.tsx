@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
+// v2
 
 // Фото Татьяны (Wfolio — фотограф Ольга Королёва)
 // TANYA_CIRCLE — новое фото для кружка (Mail.ru DD2n)

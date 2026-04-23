@@ -396,12 +396,12 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {[
-              { label: "Золотой шёлк", emoji: "✨", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/683058f1-043a-4036-a46d-1026764442eb.jpg" },
-              { label: "Шоколад", emoji: "🍫", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/cb79462a-aad8-4e65-85a8-d62f9f2a52c0.jpg" },
-              { label: "Тёмно-зелёный", emoji: "🌿", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/7f3bc130-352c-4dae-83b9-2ab4d59be3d0.jpg" },
-              { label: "Леопард", emoji: "🐆", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/a7834910-8fc6-4846-889d-b4329e089947.jpg" },
-              { label: "Чёрный гламур", emoji: "🖤", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/4de37681-4d68-4af3-9f4d-1281a6dadb8f.jpg" },
-              { label: "Бежевый шёлк", emoji: "🌾", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/1359c0b8-1e59-4e9b-8d2c-94b90235efef.jpg" },
+              { label: "Золотой", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/683058f1-043a-4036-a46d-1026764442eb.jpg" },
+              { label: "Шоколад", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/cb79462a-aad8-4e65-85a8-d62f9f2a52c0.jpg" },
+              { label: "Тёмно-зелёный", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/7f3bc130-352c-4dae-83b9-2ab4d59be3d0.jpg" },
+              { label: "Леопард", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/a7834910-8fc6-4846-889d-b4329e089947.jpg" },
+              { label: "Чёрный гламур", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/4de37681-4d68-4af3-9f4d-1281a6dadb8f.jpg" },
+              { label: "Бежевый", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/1359c0b8-1e59-4e9b-8d2c-94b90235efef.jpg" },
             ].map((c) => (
               <div key={c.label} className="group relative overflow-hidden border border-gold/20 hover:border-gold/50 transition-all duration-300">
                 <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
@@ -412,8 +412,7 @@ export default function Index() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 text-center">
-                    <span className="text-lg">{c.emoji}</span>
-                    <p className="text-sand-light text-xs font-light tracking-wide mt-1">{c.label}</p>
+                    <p className="text-sand-light text-sm font-light tracking-widest uppercase">{c.label}</p>
                   </div>
                 </div>
               </div>

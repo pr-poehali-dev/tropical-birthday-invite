@@ -367,19 +367,10 @@ export default function Index() {
               Татьяна
             </h2>
             <div className="h-px w-24 bg-gold mb-6" />
-            <p className="text-sand-dark font-light text-lg leading-relaxed mb-4">
+            <p className="text-sand-dark font-light text-lg leading-relaxed">
               Загадочная. Яркая. Неповторимая.<br />
               Как настоящий леопард тропиков.
             </p>
-            <div className="border-l-2 border-gold/60 pl-4">
-              <p className="text-gold text-xs uppercase tracking-widest mb-2">Дресс-код</p>
-              <p className="text-sand-light font-light text-base leading-relaxed">
-                Тропический шик — яркие принты, леопард, золото, чёрный гламур, зелень и цветочные украшения.
-              </p>
-              <p className="text-sand-dark font-light text-sm mt-2 italic">
-                Пусть каждый станет частью этого сказочного путешествия в Африку!
-              </p>
-            </div>
           </div>
         </div>
       </section>

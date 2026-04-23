@@ -396,23 +396,18 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {[
-              { label: "Золотой шёлк", emoji: "✨", color: "#b8963e" },
-              { label: "Бежевый шёлк", emoji: "🌾", color: "#c8a97a" },
-              { label: "Шоколад", emoji: "🍫", color: "#5c3317" },
-              { label: "Тёмно-зелёный", emoji: "🌿", color: "#1a3320" },
-              { label: "Чёрный гламур", emoji: "🖤", color: "#111111" },
-              { label: "Леопард", emoji: "🐆", color: "#8B5E3C" },
-            ].map((c, i) => (
+              { label: "Золотой шёлк", emoji: "✨", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/683058f1-043a-4036-a46d-1026764442eb.jpg" },
+              { label: "Шоколад", emoji: "🍫", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/cb79462a-aad8-4e65-85a8-d62f9f2a52c0.jpg" },
+              { label: "Тёмно-зелёный", emoji: "🌿", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/7f3bc130-352c-4dae-83b9-2ab4d59be3d0.jpg" },
+              { label: "Леопард", emoji: "🐆", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/a7834910-8fc6-4846-889d-b4329e089947.jpg" },
+              { label: "Чёрный гламур", emoji: "🖤", src: "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/4de37681-4d68-4af3-9f4d-1281a6dadb8f.jpg" },
+            ].map((c) => (
               <div key={c.label} className="group relative overflow-hidden border border-gold/20 hover:border-gold/50 transition-all duration-300">
                 <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
                   <img
-                    src={DRESSCODE_FABRICS}
+                    src={c.src}
                     alt={c.label}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    style={{
-                      objectPosition: `${(i % 3) * 50}% ${Math.floor(i / 3) * 50}%`,
-                      filter: i === 5 ? "sepia(0.3) saturate(1.2)" : `hue-rotate(${[0,20,-10,120,0,-30][i]}deg) saturate(${[1.2,0.8,0.7,1.1,0,1.4][i]}) brightness(${[1,1,0.7,0.8,0.3,1][i]})`,
-                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 text-center">

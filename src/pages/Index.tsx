@@ -47,7 +47,6 @@ const GALLERY_IMAGES = [
   { src: TANYA_LEOP_LOOK, alt: "Татьяна и леопард", pos: "object-top" },
   { src: COCKTAIL_PHOTO, alt: "Тропический коктейль", pos: "object-center" },
   { src: TANYA_BLACK, alt: "Татьяна", pos: "object-top" },
-  { src: MONSTERA_PHOTO, alt: "Тропические листья", pos: "object-center" },
 ];
 
 const NAV_LINKS = [

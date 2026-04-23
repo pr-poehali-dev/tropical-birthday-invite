@@ -315,7 +315,7 @@ export default function Index() {
       <Section id="about" className="py-24 px-6 relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${LEOPARD_PHOTO})`, filter: "brightness(0.25)" }}
+          style={{ backgroundImage: `url(${TANYA_LEOP_STAND})`, filter: "brightness(0.25)" }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="max-w-4xl mx-auto text-center relative">

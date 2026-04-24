@@ -22,8 +22,6 @@ function getTimeLeft(target: Date): TimeLeft {
   };
 }
 
-const LABELS = ["дней", "часов", "минут", "секунд"];
-
 export default function Countdown({ targetDate }: CountdownProps) {
   const [time, setTime] = useState<TimeLeft>(getTimeLeft(targetDate));
 
@@ -32,22 +30,22 @@ export default function Countdown({ targetDate }: CountdownProps) {
     return () => clearInterval(id);
   }, [targetDate]);
 
-  const values = [time.days, time.hours, time.minutes, time.seconds];
+  const parts = [
+    { value: time.days, label: "дн" },
+    { value: time.hours, label: "ч" },
+    { value: time.minutes, label: "мин" },
+    { value: time.seconds, label: "сек" },
+  ];
 
   return (
-    <div className="flex justify-center gap-2 md:gap-6 mt-10">
-      {values.map((val, i) => (
+    <div className="flex justify-center items-end gap-4 mt-10 flex-wrap">
+      {parts.map((p, i) => (
         <div key={i} className="flex flex-col items-center">
-          <div className="relative">
-            <div className="w-14 h-14 md:w-20 md:h-20 flex items-center justify-center border border-gold/40 bg-black/60 backdrop-blur-sm">
-              <span className="font-display font-bold text-xl md:text-3xl text-sand-light tabular-nums">
-                {String(val).padStart(2, "0")}
-              </span>
-            </div>
-            <div className="absolute inset-0 border border-gold/20 translate-x-1 translate-y-1 -z-10" />
-          </div>
-          <span className="mt-2 text-gold/70 text-[9px] uppercase tracking-[0.1em] font-sans">
-            {LABELS[i]}
+          <span className="font-display font-bold text-5xl text-gold tabular-nums leading-none">
+            {String(p.value).padStart(2, "0")}
+          </span>
+          <span className="text-sand-light/50 text-xs uppercase tracking-widest mt-1">
+            {p.label}
           </span>
         </div>
       ))}

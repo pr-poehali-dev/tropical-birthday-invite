@@ -224,8 +224,8 @@ export default function Index() {
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Leopard background image */}
         <div
-          className="absolute inset-0 bg-center bg-cover"
-          style={{ backgroundImage: `url(${LEOPARD_PHOTO})` }}
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: `url(${LEOPARD_PHOTO})`, backgroundPosition: "center 30%" }}
         />
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/65" />
@@ -263,12 +263,12 @@ export default function Index() {
           />
         ))}
 
-        <div className="relative text-center px-6 max-w-4xl mx-auto" style={{ animation: "fade-in 1.2s ease-out forwards" }}>
+        <div className="relative text-center px-6 max-w-4xl mx-auto pt-20" style={{ animation: "fade-in 1.2s ease-out forwards" }}>
 
           {/* Photo of birthday girl */}
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <div className="w-52 h-52 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-gold shadow-2xl shadow-gold/40">
+              <div className="w-36 h-36 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-gold shadow-2xl shadow-gold/40">
                 <img
                   src={TANYA_CIRCLE}
                   alt="Татьяна"

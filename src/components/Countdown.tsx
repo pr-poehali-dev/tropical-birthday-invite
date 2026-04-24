@@ -33,13 +33,24 @@ export default function Countdown({ targetDate }: CountdownProps) {
   const pad = (n: number) => String(n).padStart(2, "0");
 
   return (
-    <div className="mt-10 text-center">
-      <p className="font-display font-bold text-3xl text-gold tabular-nums tracking-wide">
-        {pad(time.days)}<span className="text-sand-light/50 text-base font-sans font-normal mx-1">дн</span>
-        {pad(time.hours)}<span className="text-sand-light/50 text-base font-sans font-normal mx-1">ч</span>
-        {pad(time.minutes)}<span className="text-sand-light/50 text-base font-sans font-normal mx-1">мин</span>
-        {pad(time.seconds)}<span className="text-sand-light/50 text-base font-sans font-normal ml-1">сек</span>
-      </p>
+    <div className="mt-10 text-center px-4">
+      <div className="flex justify-center items-center gap-3 flex-wrap">
+        {[
+          { v: time.days, l: "дней" },
+          { v: time.hours, l: "часов" },
+          { v: time.minutes, l: "минут" },
+          { v: time.seconds, l: "секунд" },
+        ].map((p, i) => (
+          <div key={i} className="flex flex-col items-center min-w-0">
+            <span className="font-sans font-bold text-2xl text-gold tabular-nums leading-none">
+              {pad(p.v)}
+            </span>
+            <span className="font-sans text-[10px] text-sand-light/50 uppercase tracking-wider mt-1">
+              {p.l}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

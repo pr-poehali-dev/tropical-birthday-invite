@@ -422,7 +422,11 @@ export default function Index() {
 
       {/* DATETIME */}
       <Section id="datetime" className="py-24 px-6 relative">
-        <div className="absolute inset-0 bg-black/70" />
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/05d4c64b-9c1c-42ab-83c0-671faa642137.jpg)` }}
+        />
+        <div className="absolute inset-0 bg-black/65" />
         <div className="max-w-4xl mx-auto relative">
           <div className="text-center mb-16">
             <p className="text-gold text-xs uppercase tracking-[0.4em] mb-4 font-script">Дата и время</p>

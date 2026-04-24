@@ -85,18 +85,18 @@ function Countdown({ targetDate }: { targetDate: Date }) {
   }, [targetDate]);
 
   return (
-    <div className="grid grid-cols-4 gap-4 md:gap-8 mt-6">
+    <div className="flex justify-center gap-6 mt-6">
       {[
-        { v: timeLeft.days, l: "Дней" },
-        { v: timeLeft.hours, l: "Часов" },
-        { v: timeLeft.minutes, l: "Минут" },
-        { v: timeLeft.seconds, l: "Секунд" },
+        { v: timeLeft.days, l: "дней" },
+        { v: timeLeft.hours, l: "часов" },
+        { v: timeLeft.minutes, l: "минут" },
+        { v: timeLeft.seconds, l: "секунд" },
       ].map(({ v, l }) => (
-        <div key={l} className="border border-gold/30 bg-black/40 backdrop-blur-sm p-4 md:p-8">
-          <p className="font-display font-black text-5xl md:text-7xl text-gold gold-shimmer tabular-nums">
+        <div key={l} className="flex flex-col items-center">
+          <p className="font-bold text-gold tabular-nums" style={{ fontFamily: "ui-monospace, monospace", fontSize: "clamp(1.4rem, 7vw, 2.5rem)" }}>
             {String(v).padStart(2, "0")}
           </p>
-          <p className="text-sand-dark text-xs uppercase tracking-widest mt-2">{l}</p>
+          <p className="text-sand-dark uppercase tracking-widest mt-1" style={{ fontSize: "clamp(0.5rem, 2.5vw, 0.65rem)" }}>{l}</p>
         </div>
       ))}
     </div>

@@ -47,9 +47,9 @@ const GALLERY_IMAGES = [
   // чередование: природа/Татьяна в каждой строке (2 и 3 колонки)
   { src: TANYA_LEOP_STAND, alt: "Татьяна с леопардом", pos: "object-top" },
   { src: PANTHER_PHOTO, alt: "Пантера", pos: "object-center" },
-  { src: TANYA_PANTHER, alt: "Татьяна с пантерой", pos: "object-top" },
   { src: PEACOCK_PHOTO, alt: "Павлин", pos: "object-center" },
   { src: MONSTERA_PHOTO2, alt: "Тропические листья", pos: "object-center" },
+  { src: TANYA_PANTHER, alt: "Татьяна с пантерой", pos: "object-top" },
   { src: COCKTAIL_PHOTO, alt: "Тропический коктейль", pos: "object-center" },
   { src: FLOWERS_PHOTO, alt: "Тропические цветы", pos: "object-center" },
   { src: TANYA_LEOP_LOOK, alt: "Татьяна и леопард", pos: "object-top" },

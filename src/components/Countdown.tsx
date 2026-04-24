@@ -30,25 +30,16 @@ export default function Countdown({ targetDate }: CountdownProps) {
     return () => clearInterval(id);
   }, [targetDate]);
 
-  const parts = [
-    { value: time.days, label: "дн" },
-    { value: time.hours, label: "ч" },
-    { value: time.minutes, label: "мин" },
-    { value: time.seconds, label: "сек" },
-  ];
+  const pad = (n: number) => String(n).padStart(2, "0");
 
   return (
-    <div className="flex justify-center items-end gap-4 mt-10 flex-wrap">
-      {parts.map((p, i) => (
-        <div key={i} className="flex flex-col items-center">
-          <span className="font-display font-bold text-5xl text-gold tabular-nums leading-none">
-            {String(p.value).padStart(2, "0")}
-          </span>
-          <span className="text-sand-light/50 text-xs uppercase tracking-widest mt-1">
-            {p.label}
-          </span>
-        </div>
-      ))}
+    <div className="mt-10 text-center">
+      <p className="font-display font-bold text-3xl text-gold tabular-nums tracking-wide">
+        {pad(time.days)}<span className="text-sand-light/50 text-base font-sans font-normal mx-1">дн</span>
+        {pad(time.hours)}<span className="text-sand-light/50 text-base font-sans font-normal mx-1">ч</span>
+        {pad(time.minutes)}<span className="text-sand-light/50 text-base font-sans font-normal mx-1">мин</span>
+        {pad(time.seconds)}<span className="text-sand-light/50 text-base font-sans font-normal ml-1">сек</span>
+      </p>
     </div>
   );
 }

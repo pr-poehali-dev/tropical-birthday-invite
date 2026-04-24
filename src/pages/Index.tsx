@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
+import Countdown from "@/components/Countdown";
 // v3 — fix LEOPARD_PHOTO reference
 
 // Фото Татьяны (Wfolio — фотограф Ольга Королёва)

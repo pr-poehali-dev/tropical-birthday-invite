@@ -44,13 +44,13 @@ const MONSTERA_PHOTO2 = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1
 const FLOWERS_PHOTO = "https://cdn.poehali.dev/projects/088db2ae-c442-49c8-ab1c-0e981533d983/bucket/03752955-530c-4d4d-944d-e7f5e198a1de.jpg";
 
 const GALLERY_IMAGES = [
-  // колонки чередуются: природа — Татьяна — природа — Татьяна...
-  { src: PANTHER_PHOTO, alt: "Пантера", pos: "object-center" },
+  // чередование: природа/Татьяна в каждой строке (2 и 3 колонки)
   { src: TANYA_LEOP_STAND, alt: "Татьяна с леопардом", pos: "object-top" },
+  { src: PANTHER_PHOTO, alt: "Пантера", pos: "object-center" },
   { src: PEACOCK_PHOTO, alt: "Павлин", pos: "object-center" },
   { src: TANYA_PANTHER, alt: "Татьяна с пантерой", pos: "object-top" },
-  { src: FLOWERS_PHOTO, alt: "Тропические цветы", pos: "object-center" },
   { src: TANYA_LEOP_LOOK, alt: "Татьяна и леопард", pos: "object-top" },
+  { src: FLOWERS_PHOTO, alt: "Тропические цветы", pos: "object-center" },
   { src: COCKTAIL_PHOTO, alt: "Тропический коктейль", pos: "object-center" },
   { src: MONSTERA_PHOTO2, alt: "Тропические листья", pos: "object-center" },
 ];

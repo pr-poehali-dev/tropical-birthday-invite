@@ -399,7 +399,7 @@ export default function Index() {
             Этот вечер будет наполнен теплом тропического солнца, ароматом экзотических цветов и лёгким бризом. Приглашаю вас разделить со мной этот особенный праздник в атмосфере роскошных тропиков.
           </p>
           <p className="text-sand-dark text-lg leading-relaxed max-w-2xl mx-auto mb-4">
-            Пусть каждый станет частью этого сказочного путешествия в Африку!
+            Пусть каждый станет частью этого сказочного путешествия в мой мир. С любовью и благодарностью. ❤️
           </p>
           <p className="text-gold font-semibold text-xl mt-4 mb-12">Сбор гостей в 15:00</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -59,14 +59,18 @@ const GALLERY_IMAGES = [
 ];
 
 const NAV_LINKS = [
-  { href: "#about", label: "Программа" },
-  { href: "#dresscode", label: "Дресс-код" },
-  { href: "#datetime", label: "Дата" },
-  { href: "#location", label: "Место" },
-  { href: "#gallery", label: "Галерея" },
-  { href: "#contacts", label: "Контакты" },
-  { href: "#rsvp", label: "RSVP" },
+  { href: "about", label: "Программа" },
+  { href: "dresscode", label: "Дресс-код" },
+  { href: "datetime", label: "Дата" },
+  { href: "location", label: "Место" },
+  { href: "gallery", label: "Галерея" },
+  { href: "contacts", label: "Контакты" },
+  { href: "rsvp", label: "RSVP" },
 ];
+
+const scrollTo = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+};
 
 function Countdown({ targetDate }: { targetDate: Date }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -256,12 +260,12 @@ export default function Index() {
           <ul className="hidden md:flex gap-8">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
+                <button
+                  onClick={() => scrollTo(l.href)}
                   className="text-sand-dark hover:text-gold transition-colors duration-300 text-sm uppercase tracking-widest font-light"
                 >
                   {l.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>
@@ -269,14 +273,13 @@ export default function Index() {
         {menuOpen && (
           <div className="md:hidden bg-jungle-light/98 backdrop-blur-md px-6 pb-6">
             {NAV_LINKS.map((l) => (
-              <a
+              <button
                 key={l.href}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="block py-3 text-sand-dark hover:text-gold transition-colors border-b border-jungle-mid text-sm uppercase tracking-widest"
+                onClick={() => { scrollTo(l.href); setMenuOpen(false); }}
+                className="block w-full text-left py-3 text-sand-dark hover:text-gold transition-colors border-b border-jungle-mid text-sm uppercase tracking-widest"
               >
                 {l.label}
-              </a>
+              </button>
             ))}
           </div>
         )}
@@ -371,12 +374,12 @@ export default function Index() {
             18 мая · 2026
           </p>
 
-          <a
-            href="#rsvp"
+          <button
+            onClick={() => scrollTo("rsvp")}
             className="inline-block bg-gold text-black font-body font-semibold text-xs uppercase tracking-widest px-10 py-4 hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/40"
           >
             Подтвердить участие
-          </a>
+          </button>
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gold animate-bounce">

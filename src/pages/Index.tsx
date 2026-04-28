@@ -618,7 +618,7 @@ export default function Index() {
         <div className="absolute inset-0 bg-black/75" />
         <div className="max-w-2xl mx-auto relative">
           <div className="text-center mb-16">
-            <p className="font-script text-gold text-2xl mb-2">RSVP</p>
+
             <h2 className="font-display font-bold text-5xl md:text-6xl text-sand-light">Вы придёте?</h2>
             <GoldDivider />
             <p className="text-sand-dark font-light">Пожалуйста, подтвердите своё присутствие заранее</p>

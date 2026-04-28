@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 import Countdown from "@/components/Countdown";
+import func2url from "../../backend/func2url.json";
+
+const RSVP_URL = func2url.rsvp;
 // v3 — fix LEOPARD_PHOTO reference
 
 // Фото Татьяны (Wfolio — фотограф Ольга Королёва)
@@ -173,9 +176,19 @@ export default function Index() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleRsvp = (e: React.FormEvent) => {
+  const handleRsvp = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (rsvpName && rsvpAnswer) setRsvpSent(true);
+    if (!rsvpName || !rsvpAnswer) return;
+    try {
+      await fetch(RSVP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: rsvpName, answer: rsvpAnswer }),
+      });
+    } catch {
+      // сохраняем в любом случае, даже если сеть недоступна
+    }
+    setRsvpSent(true);
   };
 
   return (

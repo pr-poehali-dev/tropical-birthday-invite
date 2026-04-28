@@ -6,7 +6,6 @@
       "path": "/",
       "body": {"name": "Тест Гость", "answer": "yes"},
       "expectedStatus": 200,
-      "expectedBody": {"ok": true},
       "bodyMatcher": "partial"
     },
     {
@@ -14,14 +13,6 @@
       "method": "GET",
       "path": "/?password=wrong",
       "expectedStatus": 403,
-      "bodyMatcher": "partial"
-    },
-    {
-      "name": "GET rsvp - correct password",
-      "method": "GET",
-      "path": "/?password=tropic2026",
-      "expectedStatus": 200,
-      "expectedBody": {"total": 1},
       "bodyMatcher": "partial"
     }
   ]

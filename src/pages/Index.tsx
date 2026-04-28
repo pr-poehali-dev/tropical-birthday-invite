@@ -163,12 +163,61 @@ function GoldDivider() {
   );
 }
 
+interface Guest {
+  id: number;
+  name: string;
+  answer: "yes" | "no";
+  created_at: string;
+}
+interface AdminData {
+  guests: Guest[];
+  total: number;
+  yes: number;
+  no: number;
+}
+
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [rsvpName, setRsvpName] = useState("");
   const [rsvpAnswer, setRsvpAnswer] = useState<"yes" | "no" | null>(null);
   const [rsvpSent, setRsvpSent] = useState(false);
+  const [adminOpen, setAdminOpen] = useState(false);
+  const [adminPassword, setAdminPassword] = useState("");
+  const [adminData, setAdminData] = useState<AdminData | null>(null);
+  const [adminError, setAdminError] = useState("");
+  const [adminLoading, setAdminLoading] = useState(false);
+
+  const handleAdminLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAdminLoading(true);
+    setAdminError("");
+    try {
+      const res = await fetch(`${RSVP_URL}?password=${encodeURIComponent(adminPassword)}`);
+      const json = await res.json();
+      if (res.status === 403) {
+        setAdminError("Неверный пароль");
+      } else {
+        setAdminData(json);
+      }
+    } catch {
+      setAdminError("Ошибка подключения");
+    } finally {
+      setAdminLoading(false);
+    }
+  };
+
+  const closeAdmin = () => {
+    setAdminOpen(false);
+    setAdminPassword("");
+    setAdminData(null);
+    setAdminError("");
+  };
+
+  const formatDate = (iso: string) => {
+    const d = new Date(iso);
+    return d.toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -706,8 +755,91 @@ export default function Index() {
           <p className="font-script text-3xl text-gold mb-1">Tropic Party</p>
           <p className="font-display text-lg italic text-sand-dark mb-1">Татьяна · День Рождения</p>
           <p className="text-sand-dark/50 text-xs font-light tracking-widest uppercase">2026</p>
+          <button
+            onClick={() => setAdminOpen(true)}
+            className="mt-6 text-sand-dark/20 hover:text-sand-dark/50 text-xs transition-colors duration-300"
+          >
+            ···
+          </button>
         </div>
       </footer>
+
+      {/* ADMIN MODAL */}
+      {adminOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 px-4" onClick={closeAdmin}>
+          <div
+            className="w-full max-w-lg bg-[#0a0a0a] border border-gold/20 rounded-2xl p-8 relative max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button onClick={closeAdmin} className="absolute top-4 right-4 text-white/30 hover:text-white/70 transition-colors">
+              <Icon name="X" size={20} />
+            </button>
+            <p className="font-script text-gold text-2xl mb-1">Tropic Party</p>
+            <p className="text-white/40 text-xs mb-6">Список гостей · только для организатора</p>
+
+            {!adminData ? (
+              <form onSubmit={handleAdminLogin} className="flex flex-col gap-4">
+                <label className="text-white/60 text-sm">Введите пароль</label>
+                <input
+                  type="password"
+                  value={adminPassword}
+                  onChange={(e) => setAdminPassword(e.target.value)}
+                  placeholder="••••••••"
+                  autoFocus
+                  className="bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/30 outline-none focus:border-yellow-500 transition"
+                />
+                {adminError && <p className="text-red-400 text-sm">{adminError}</p>}
+                <button
+                  type="submit"
+                  disabled={adminLoading}
+                  className="bg-yellow-600 hover:bg-yellow-500 text-black font-semibold py-3 rounded-lg transition disabled:opacity-50"
+                >
+                  {adminLoading ? "Загрузка..." : "Войти"}
+                </button>
+              </form>
+            ) : (
+              <div>
+                <div className="grid grid-cols-3 gap-3 mb-6">
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                    <div className="text-2xl font-bold text-yellow-400">{adminData.total}</div>
+                    <div className="text-white/40 text-xs mt-1">Всего</div>
+                  </div>
+                  <div className="bg-white/5 border border-green-500/20 rounded-xl p-4 text-center">
+                    <div className="text-2xl font-bold text-green-400">{adminData.yes}</div>
+                    <div className="text-white/40 text-xs mt-1">Придут ✓</div>
+                  </div>
+                  <div className="bg-white/5 border border-red-500/20 rounded-xl p-4 text-center">
+                    <div className="text-2xl font-bold text-red-400">{adminData.no}</div>
+                    <div className="text-white/40 text-xs mt-1">Не придут ✗</div>
+                  </div>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+                  <div className="grid grid-cols-3 px-4 py-2 text-white/30 text-xs uppercase tracking-wider border-b border-white/10">
+                    <span>Имя</span><span className="text-center">Ответ</span><span className="text-right">Дата</span>
+                  </div>
+                  {adminData.guests.length === 0 ? (
+                    <div className="px-4 py-8 text-center text-white/30 text-sm">Пока никто не ответил</div>
+                  ) : (
+                    adminData.guests.map((g) => (
+                      <div key={g.id} className="grid grid-cols-3 px-4 py-3 border-b border-white/5 last:border-0 items-center">
+                        <span className="text-white text-sm font-medium truncate">{g.name}</span>
+                        <span className="text-center">
+                          {g.answer === "yes"
+                            ? <span className="inline-block bg-green-500/20 text-green-400 text-xs px-2 py-0.5 rounded-full">Приду</span>
+                            : <span className="inline-block bg-red-500/20 text-red-400 text-xs px-2 py-0.5 rounded-full">Не смогу</span>
+                          }
+                        </span>
+                        <span className="text-right text-white/30 text-xs">{formatDate(g.created_at)}</span>
+                      </div>
+                    ))
+                  )}
+                </div>
+                <button onClick={closeAdmin} className="mt-4 text-white/30 hover:text-white/60 text-xs transition">Закрыть</button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

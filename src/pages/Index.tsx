@@ -530,7 +530,7 @@ export default function Index() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="border-l-2 border-gold pl-8 mb-8">
-                <h3 className="font-display text-3xl text-sand-light mb-2">База отдыха «Лесная сказка»</h3>
+                <h3 className="font-display text-3xl text-sand-light mb-2">Вилла на базе отдыха «Лесная сказка»</h3>
                 <p className="text-gold text-sm uppercase tracking-wider mb-4">г. Краснодар</p>
                 <p className="text-sand-dark leading-relaxed">
                   Хутор Ленина, ул. Южная, 95<br />
@@ -566,7 +566,7 @@ export default function Index() {
                 <Icon name="MapPin" size={56} fallback="Map" />
               </div>
               <div className="text-center px-6">
-                <p className="text-sand-light font-display text-xl mb-1">База отдыха «Лесная сказка»</p>
+                <p className="text-sand-light font-display text-xl mb-1">Вилла на базе отдыха «Лесная сказка»</p>
                 <p className="text-sand-dark text-sm font-light">Хутор Ленина, ул. Южная, 95 · г. Краснодар</p>
               </div>
               <a
